@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
+//TODO. Make class component
 const AddMessage = (props) => {
     let input
 
     const onKeyPress = event => {
         if (event.key === 'Enter') {
-            props.dispatch(input.value, 'Me');
+            props.sendMessage(input.value, 'Me');
             input.value = '';
         }
     }
@@ -25,7 +27,7 @@ const AddMessage = (props) => {
 }
 
 AddMessage.propTypes = {
-    dispatch: PropTypes.func.isRequired
+    sendMessage: PropTypes.func.isRequired
 }
 
 export default AddMessage

@@ -12,7 +12,6 @@ class App extends Component {
         <Sidebar />
         <section id="main">
           <MessagesList />
-          <section id="new-message">New Message</section>
           <AddMessage />
         </section>
       </div>

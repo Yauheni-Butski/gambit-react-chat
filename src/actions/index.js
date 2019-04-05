@@ -25,7 +25,7 @@ export const messageReceived = (message, author) => ({
     author
 });
 
-export const populateusersList = users => ({
+export const populateUsersList = users => ({
     type: types.USER_LIST,
     users
 });
