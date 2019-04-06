@@ -7,8 +7,10 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import chatReducers from './reducers';
+import { addUser } from './actions/index';
 
 const store = createStore(chatReducers);
+store.dispatch(addUser('Me'));
 
 ReactDOM.render(
     <Provider store={store}>
