@@ -7,6 +7,8 @@ import { AddMessage } from "./containers/AddMessage"; */
 
 import { RoomList } from "./containers/RoomList";
 import { MessagesList } from "./containers/MessagesList";
+import { SendMessageForm } from "./containers/SendMessageForm";
+import { NewRoomForm } from "./containers/NewRoomForm"
 
 class App extends Component {
   render() {
@@ -23,6 +25,8 @@ class App extends Component {
     <div className="app">
       <RoomList />
       <MessagesList />
+      <SendMessageForm />
+      <NewRoomForm />
     </div>
   );
   }
