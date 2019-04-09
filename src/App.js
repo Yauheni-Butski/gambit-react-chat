@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import { Sidebar } from "./containers/Sidebar";
+/* import { Sidebar } from "./containers/Sidebar";
 import { MessagesList } from "./containers/MessagesList";
-import { AddMessage } from "./containers/AddMessage";
+import { AddMessage } from "./containers/AddMessage"; */
+
+import { RoomList } from "./containers/RoomList";
+import { MessagesList } from "./containers/MessagesList";
 
 class App extends Component {
   render() {
-    return (
+/*     return (
       <div id="container">
         <Sidebar />
         <section id="main">
@@ -15,7 +18,13 @@ class App extends Component {
           <AddMessage />
         </section>
       </div>
-    );
+    ); */
+  return (
+    <div className="app">
+      <RoomList />
+      <MessagesList />
+    </div>
+  );
   }
 }
 

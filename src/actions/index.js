@@ -1,14 +1,13 @@
 import * as types from '../constants/ActionTypes';
 
-let nextMessageId = 0;
+/* let nextMessageId = 0; */
 let nextUserId = 0;
 
 //you send new message
-export const addMessage = (message, author) => ({
+export const addMessage = (senderId, text) => ({
     type: types.ADD_MESSAGE,
-    id: nextMessageId++,
-    message,
-    author
+    senderId,
+    text
 });
 
 export const addUser = name => ({
@@ -18,14 +17,23 @@ export const addUser = name => ({
 });
 
 //you receive message from someone else
-export const messageReceived = (message, author) => ({
+export const messageReceived = (senderId, text) => ({
     type: types.MESSAGE_RECEIVED,
-    id: nextMessageId++,
-    message,
-    author
+    senderId,
+    text
 });
 
 export const populateUsersList = users => ({
     type: types.USER_LIST,
     users
+});
+
+export const addRoom = name => ({
+    type: types.ADD_ROOM,
+    name
+});
+
+export const populateRoomList = rooms => ({
+    type: types.ROOM_LIST,
+    rooms
 });

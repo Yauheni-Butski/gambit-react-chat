@@ -1,14 +1,28 @@
 import * as types from '../constants/ActionTypes';
 
-const messagesReducer = (state = [], action) => {
+const DUMMY_DATA = [
+    {
+        senderId: 'perborgen',
+        text: 'Hey, how is it going?'
+    },
+    {
+        senderId: 'janedoe',
+        text: 'Great! How about you?'
+    },
+    {
+        senderId: 'perborgen',
+        text: 'Good to hear! I am great as well'
+    }
+]
+
+const messagesReducer = (state = DUMMY_DATA, action) => {
     switch (action.type) {
         case types.ADD_MESSAGE:
         case types.MESSAGE_RECEIVED:
             return state.concat([
                 {
-                    message: action.message,
-                    author: action.author,
-                    id: action.id
+                    text: action.text,
+                    senderId: action.senderId
                 }
             ]);
         default:
