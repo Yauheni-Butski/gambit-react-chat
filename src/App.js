@@ -3,7 +3,7 @@ import './App.css';
 
 import { ChatManager, TokenProvider } from '@pusher/chatkit-client';
 import { tokenUrl, instanceLocator } from './config';
-import { addMessage } from './actions/index';
+import { messageReceived } from './actions/index';
 
 import { RoomList } from "./containers/RoomList";
 import { MessagesList } from "./containers/MessagesList";
@@ -30,9 +30,26 @@ class App extends Component {
           messageLimit: 20,
           hooks: {
             onMessage: message => {
-              store.dispatch(addMessage(message.senderId, message.parts[0].payload.content));
-              //TODO. https://docs.pusher.com/chatkit/reference/javascript#messages
-              //TODO. Есть разные типы, вначале проверить нужно
+              message.parts.forEach(messagePart => {
+                //TODO. Обрабатывать 3 типа сообщения
+                //TODO. https://docs.pusher.com/chatkit/reference/javascript#messages
+                let text = '';
+                switch(messagePart.partType){
+                  case "url":
+                    text = messagePart.payload.url;
+                    break;
+                  case "attachment":
+                    // temporary send only name
+                    text = messagePart.payload.name;
+                    break;
+                  case "inline":
+                  default:
+                    text = messagePart.payload.content;
+                    break;
+                }
+
+                store.dispatch(messageReceived(message.senderId, text));
+              });
             }
           }
         })
