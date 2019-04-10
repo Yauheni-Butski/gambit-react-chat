@@ -1,45 +1,45 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-//TODO. Make class component
-/* const AddMessage = (props) => {
-    let input
-
-    const onKeyPress = event => {
-        if (event.key === 'Enter') {
-            props.sendMessage(input.value, 'Me');
-            input.value = '';
+class SendMessageForm extends Component {
+    constructor() {
+        super();
+        this.state = {
+            newMessageText: ''
         }
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    return (
-        <section id="new-message">
-            <input
-            onKeyPress={onKeyPress}
-            type="text"
-            ref={(node) => {
-                input = node;
-            }} 
-            />
-        </section>
-    )
-} */
+    handleChange(e){
+        this.setState({
+            newMessageText: e.target.value
+        })
+    }
 
+    handleSubmit(e){
+        e.preventDefault();
+        this.props.sendMessage(this.state.newMessageText);
+        this.setState({
+            newMessageText: ''
+        });
+    }
 
-/* TODO. 1. this.props.sendMessage - сократить, просто использовать sendMessage в разметке */
-class SendMessageForm extends Component {
     render() {
         return (
-            <form className="send-message-form">
+            <form
+                onSubmit={this.handleSubmit} 
+                className="send-message-form">
                 <input
-                    placeholder="SendMessageForm"
+                    onChange={this.handleChange}
+                    value={this.state.newMessageText}
+                    placeholder="Type your message and hit ENTER"
                     type="text" />
             </form>
         )
     }
 }
-
-
 
 SendMessageForm.propTypes = {
     sendMessage: PropTypes.func.isRequired

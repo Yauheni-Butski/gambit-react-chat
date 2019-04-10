@@ -16,7 +16,7 @@ import userName from './utils/name'; */
 
 /* import { ChatManager, TokenProvider } from '@pusher/chatkit-client';
 import { tokenUrl, instanceLocator } from './config';
-import { addMessage } from './actions/index'; */
+import { sendMessage } from './actions/index'; */
 
 
 //const sagaMiddleware = createSagaMiddleware();
@@ -49,7 +49,7 @@ import { addMessage } from './actions/index'; */
         messageLimit: 20,
         hooks: {
           onMessage: message => {
-            store.dispatch(addMessage(message.senderId, message.parts[0].payload.content));
+            store.dispatch(sendMessage(message.senderId, message.parts[0].payload.content));
             //TODO. https://docs.pusher.com/chatkit/reference/javascript#messages
             //TODO. Есть разные типы, вначале проверить нужно
           }
@@ -58,7 +58,7 @@ import { addMessage } from './actions/index'; */
     }); */
 
 
-
+//TODO. 1. Ещё упрощаем index.js. А создание store и Provider опускаем на App.js
 ReactDOM.render(
     <Provider store={store}>
         <App />

@@ -1,14 +1,32 @@
+import React, { Component } from 'react';
+
 import { connect } from 'react-redux'
 import SendMessageFormComponent from '../components/SendMessageForm'
-import { addMessage } from '../actions'
 
-/* TODO. 1. Переименовать addMessage -> sendMessage */
-/* TODO. 2. Структуру метода sendMessage изменить */
+class SendMessageForm extends Component {
 
-const mapDispatchToProps = dispatch => ({
-    sendMessage: (message, author) => {
-        dispatch(addMessage(message, author));
+    constructor(){
+        super();
+        this.sendMessageToServer = this.sendMessageToServer.bind(this);
     }
+
+    sendMessageToServer(text){
+        let currentUser = this.props.currentUser;
+        currentUser.sendMessage({
+            text: text,
+            roomId: '19660160' //TODO. Get Current room id from state
+          });
+    }
+
+    render(){
+        return(
+            <SendMessageFormComponent sendMessage={this.sendMessageToServer}/>
+        );
+    }
+}
+
+const mapStateToProps = state => ({
+    currentUser: state.currentUserState
 });
 
-export const SendMessageForm = connect(() => ({}), mapDispatchToProps)(SendMessageFormComponent)
+export default connect(mapStateToProps)(SendMessageForm)

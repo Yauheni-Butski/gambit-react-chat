@@ -1,14 +1,6 @@
 import * as types from '../constants/ActionTypes';
 
-/* let nextMessageId = 0; */
 let nextUserId = 0;
-
-//you send new message
-export const addMessage = (senderId, text) => ({
-    type: types.ADD_MESSAGE,
-    senderId,
-    text
-});
 
 export const addUser = name => ({
     type: types.ADD_USER,
@@ -36,4 +28,9 @@ export const addRoom = name => ({
 export const populateRoomList = rooms => ({
     type: types.ROOM_LIST,
     rooms
+});
+
+export const updateCurrentUser = currentUser => ({
+    type: types.UPD_CURR_USER,
+    currentUser
 });

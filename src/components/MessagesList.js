@@ -2,20 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Message from './Message';
 
-/* const MessagesList = ({messages}) => {
-    return (
-        <section id="messages-list">
-            <ul>
-                {messages.map(message => (
-                    <Message
-                        key={message.id}
-                        {...message}/>
-                ))}
-            </ul>
-        </section>
-    );
-} */
-
 /* TODO. 1. this.props.messages - сократить, просто использовать messages в разметке */
 class MessagesList extends Component {
     render(){
@@ -23,10 +9,7 @@ class MessagesList extends Component {
             <div className="message-list">
                 {this.props.messages.map((message, index) => {
                     return (
-                        <div key={index} className="message">
-                            <div className="message-username">{message.senderId}</div>
-                            <div className="message-text">{message.text}</div>
-                        </div>
+                        <Message key={index} username={message.senderId} text={message.text}/>
                     )
                 })}
             </div>
