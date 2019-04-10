@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { messageReceived, clearMessages, updateRoomList } from '../actions/index';
+import { messageReceived, clearMessages, updateRoomList, updateCurrentRoom } from '../actions/index';
 import RoomListComponent from '../components/RoomList'
 
 class RoomList extends Component{
@@ -44,6 +44,8 @@ class RoomList extends Component{
           }
         })
         .then(room => {
+            this.props.updateCurrentRoom(room);
+
             //after we subscribe to room, our collections 'joinableRooms' and 'joinedRooms' will changed
             //one room from 'joinable' goes to 'joined'. So we should update our state
             currentUser.getJoinableRooms()
@@ -79,6 +81,9 @@ const mapDispatchToProps = dispatch => ({
     },
     populateRooms: (joinableRooms, joinedRooms) => {
         dispatch(updateRoomList(joinableRooms, joinedRooms));
+    },
+    updateCurrentRoom: (currentRoom) => {
+        dispatch(updateCurrentRoom(currentRoom));
     }
 });
 

@@ -39,6 +39,11 @@ export const updateCurrentUser = currentUser => ({
     currentUser
 });
 
+export const updateCurrentRoom = currentRoom => ({
+    type: types.UPD_CURR_ROOM,
+    currentRoom
+});
+
 export const updateRoomList = (joinableRooms, joinedRooms) => ({
     type: types.UPD_ROOM_LIST,
     joinableRooms,
