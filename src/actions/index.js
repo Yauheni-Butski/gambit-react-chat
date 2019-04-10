@@ -20,17 +20,23 @@ export const populateUsersList = users => ({
     users
 });
 
-export const addRoom = name => ({
+/* export const addRoom = name => ({
     type: types.ADD_ROOM,
     name
-});
+}); */
 
-export const populateRoomList = rooms => ({
+/* export const populateRoomList = rooms => ({
     type: types.ROOM_LIST,
     rooms
-});
+}); */
 
 export const updateCurrentUser = currentUser => ({
     type: types.UPD_CURR_USER,
     currentUser
+});
+
+export const updateRoomList = (joinableRooms, joinedRooms) => ({
+    type: types.UPD_ROOM_LIST,
+    joinableRooms,
+    joinedRooms
 });

@@ -3,7 +3,7 @@ import './App.css';
 
 import { ChatManager, TokenProvider } from '@pusher/chatkit-client';
 import { tokenUrl, instanceLocator } from './config';
-import { messageReceived, updateCurrentUser } from './actions/index';
+import { messageReceived, updateCurrentUser, updateRoomList } from './actions/index';
 
 import { RoomList } from "./containers/RoomList";
 import { MessagesList } from "./containers/MessagesList";
@@ -29,6 +29,13 @@ class App extends Component {
     chatManager.connect()
       .then(currentUser => {
         store.dispatch(updateCurrentUser(currentUser));
+
+        currentUser.getJoinableRooms()
+        .then(joinableRooms => {
+          let joinedRooms = currentUser.rooms;
+          store.dispatch(updateRoomList(joinableRooms, joinedRooms))
+        })
+        .catch(err => console.log('error on joinableRooms: ', err));
 
         currentUser.subscribeToRoomMultipart({
           roomId: '19660160',
@@ -59,7 +66,8 @@ class App extends Component {
             }
           }
         })
-      });
+      })
+      .catch(err => console.log('error on connecting: ', err));
   }
 
   render() {

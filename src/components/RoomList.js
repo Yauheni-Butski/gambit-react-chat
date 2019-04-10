@@ -1,28 +1,45 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 
-/* TODO. 1. this.props.messages - сократить, просто использовать messages в разметке */
-/* TODO. 2. Добавить Room component, если мы будем сложнее название комнату рендерить*/
+/* TODO. 1. Сделать как function component */
 class RoomList extends Component {
     render () {
+        //combine joinableRooms and joinedRooms together
+        let allRooms = [...this.props.rooms.joinableRooms, ...this.props.rooms.joinedRooms];
+
         return (
             <div className="rooms-list">
-                {this.props.rooms.map((room, index) => {
-                    return (
-                        <div key={index}>{room.name}</div>
-                    )
-                })}
+                <ul>
+                    <h3>Your rooms:</h3>
+                    {allRooms.map(room => {
+                        {console.log('Объект комнаты: '); console.log(room);}
+                        return (
+                            <li key={room.id} className="room">
+                                <a href="#"># {room.name}</a>
+                            </li>
+                        )
+                    })}
+                </ul>
             </div>
         )
     }
 }
 
 RoomList.propTypes = {
-    rooms: PropTypes.arrayOf(
-        PropTypes.shape({
-            name: PropTypes.string.isRequired
-        }).isRequired
-    ).isRequired
+    rooms: PropTypes.shape({
+        joinableRooms: PropTypes.arrayOf(
+            PropTypes.shape({
+                id: PropTypes.string.isRequired,
+                name: PropTypes.string.isRequired //TODO. specify more properties
+            })
+        ).isRequired,
+        joinedRooms: PropTypes.arrayOf(
+            PropTypes.shape({
+                id: PropTypes.string.isRequired,
+                name: PropTypes.string.isRequired //TODO. specify more properties
+            })
+        ).isRequired
+    }).isRequired
 }
 
 export default RoomList
