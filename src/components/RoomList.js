@@ -1,28 +1,24 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types';
 
-/* TODO. 1. Сделать как function component */
-class RoomList extends Component {
-    render () {
-        //combine joinableRooms and joinedRooms together
-        let allRooms = [...this.props.rooms.joinableRooms, ...this.props.rooms.joinedRooms];
+function RoomList({rooms}) {
+    //combine joinableRooms and joinedRooms together
+    let allRooms = [...rooms.joinableRooms, ...rooms.joinedRooms];
 
-        return (
-            <div className="rooms-list">
-                <ul>
-                    <h3>Your rooms:</h3>
-                    {allRooms.map(room => {
-                        {console.log('Объект комнаты: '); console.log(room);}
-                        return (
-                            <li key={room.id} className="room">
-                                <a href="#"># {room.name}</a>
-                            </li>
-                        )
-                    })}
-                </ul>
-            </div>
-        )
-    }
+    return(
+        <div className="rooms-list">
+            <ul>
+                <h3>Your rooms:</h3>
+                {allRooms.map(room => {
+                    return (
+                        <li key={room.id} className="room">
+                            <a href="#"># {room.name}</a>
+                        </li>
+                    )
+                })}
+            </ul>
+        </div>
+    )
 }
 
 RoomList.propTypes = {
