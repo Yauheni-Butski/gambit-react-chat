@@ -12,9 +12,10 @@ class SendMessageForm extends Component {
 
     sendMessageToServer(text){
         let currentUser = this.props.currentUser;
+        let currentRoom = this.props.currentRoom;
         currentUser.sendMessage({
             text: text,
-            roomId: '19660160' //TODO. Get Current room id from state
+            roomId: currentRoom.id
           });
     }
 
@@ -26,7 +27,8 @@ class SendMessageForm extends Component {
 }
 
 const mapStateToProps = state => ({
-    currentUser: state.currentUserState
+    currentUser: state.currentUserState,
+    currentRoom: state.currentRoomState
 });
 
 export default connect(mapStateToProps)(SendMessageForm)

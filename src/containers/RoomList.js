@@ -62,14 +62,16 @@ class RoomList extends Component{
         return (
             <RoomListComponent 
                 subscribeToRoom={this.subscribeToRoom}
-                rooms={this.props.rooms}/>
+                rooms={this.props.rooms}
+                currentRoomId={this.props.currentRoomId}/>
         )
     }
 }
 
 const mapStateToProps = state => ({
     rooms: state.roomsState,
-    currentUser: state.currentUserState
+    currentUser: state.currentUserState,
+    currentRoomId: state.currentRoomState.id
 });
 
 const mapDispatchToProps = dispatch => ({
