@@ -1,4 +1,5 @@
 export const MESSAGE_RECEIVED = "MESSAGE_RECEIVED";
+export const CLEAR_MESSAGES = "CLEAR_MESSAGES";
 export const ADD_USER = "ADD_USER";
 export const USER_LIST = "USER_LIST";
 /* export const ADD_ROOM = "ADD_ROOM"; */

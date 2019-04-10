@@ -8,6 +8,10 @@ export const addUser = name => ({
     name
 });
 
+export const clearMessages = () => ({
+    type: types.CLEAR_MESSAGES
+});
+
 //you receive message from someone else
 export const messageReceived = (senderId, text) => ({
     type: types.MESSAGE_RECEIVED,

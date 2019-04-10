@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { messageReceived } from '../actions/index';
+import { messageReceived, clearMessages, updateRoomList } from '../actions/index';
 import RoomListComponent from '../components/RoomList'
 
 class RoomList extends Component{
@@ -10,8 +10,10 @@ class RoomList extends Component{
     }
 
     subscribeToRoom(roomId){
-        let currentUser = this.props.currentUser;
+        //clear messages state, for new room
+        this.props.clearMessages();
 
+        let currentUser = this.props.currentUser;
         currentUser.subscribeToRoomMultipart({
           roomId: roomId,
           messageLimit: 20,
@@ -41,6 +43,17 @@ class RoomList extends Component{
             }
           }
         })
+        .then(room => {
+            //after we subscribe to room, our collections 'joinableRooms' and 'joinedRooms' will changed
+            //one room from 'joinable' goes to 'joined'. So we should update our state
+            currentUser.getJoinableRooms()
+            .then(joinableRooms => {
+              let joinedRooms = currentUser.rooms;
+              this.props.populateRooms(joinableRooms, joinedRooms);
+            })
+            .catch(err => console.log('error on joinableRooms: ', err));
+        })
+        .catch(err => console.log('error on subscribing to room: ', err));
     }
 
     render(){
@@ -60,6 +73,12 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     onMessageReceived: (senderId, text) => {
        dispatch(messageReceived(senderId, text));
+    },
+    clearMessages: () => {
+        dispatch(clearMessages());
+    },
+    populateRooms: (joinableRooms, joinedRooms) => {
+        dispatch(updateRoomList(joinableRooms, joinedRooms));
     }
 });
 

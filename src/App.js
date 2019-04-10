@@ -30,7 +30,7 @@ class App extends Component {
       .then(currentUser => {
         store.dispatch(updateCurrentUser(currentUser));
 
-        //TODO. Move to method getRooms()
+        //TODO. Move to method getRooms(). We call the same from here and RoomList
         currentUser.getJoinableRooms()
         .then(joinableRooms => {
           let joinedRooms = currentUser.rooms;
