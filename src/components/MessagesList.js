@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Message from './Message';
 
-/* TODO. 1. this.props.messages - сократить, просто использовать messages в разметке */
+/* TODO. 1. Превратить в functional component */
 class MessagesList extends Component {
+    
     render(){
         return (
             <div className="message-list">

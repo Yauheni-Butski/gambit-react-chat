@@ -6,7 +6,7 @@ import { tokenUrl, instanceLocator } from './config';
 import { updateCurrentUser, updateRoomList } from './actions/index';
 
 import RoomList from "./containers/RoomList";
-import { MessagesList } from "./containers/MessagesList";
+import MessagesList from "./containers/MessagesList";
 import SendMessageForm from "./containers/SendMessageForm";
 import { NewRoomForm } from "./containers/NewRoomForm";
 

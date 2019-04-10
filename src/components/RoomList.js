@@ -14,6 +14,7 @@ function RoomList({rooms, subscribeToRoom, currentRoomId}) {
                     return (
                         <li key={room.id} className={"room " + active}>
                             <a 
+                                //TODO. 1. Вынести в функцию и проверять, если мы кликаем на уже активную, то ничего не делать
                                 onClick={() => { subscribeToRoom(room.id); }}
                                 href="#">
                                 # {room.name}
