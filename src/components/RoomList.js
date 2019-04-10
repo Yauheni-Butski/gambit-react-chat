@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-function RoomList({rooms}) {
+function RoomList({rooms, subscribeToRoom}) {
     //combine joinableRooms and joinedRooms together
     let allRooms = [...rooms.joinableRooms, ...rooms.joinedRooms];
 
@@ -12,7 +12,11 @@ function RoomList({rooms}) {
                 {allRooms.map(room => {
                     return (
                         <li key={room.id} className="room">
-                            <a href="#"># {room.name}</a>
+                            <a 
+                                onClick={() => { subscribeToRoom(room.id); }}
+                                href="#">
+                                # {room.name}
+                            </a>
                         </li>
                     )
                 })}
@@ -35,7 +39,8 @@ RoomList.propTypes = {
                 name: PropTypes.string.isRequired //TODO. specify more properties
             })
         ).isRequired
-    }).isRequired
+    }).isRequired,
+    subscribeToRoom: PropTypes.func.isRequired
 }
 
 export default RoomList
