@@ -9,7 +9,7 @@ class MessageList extends Component{
         super()
         this.getMessageListRef = this.getMessageListRef.bind(this);
     }
-
+    
     getMessageListRef(node){
         this._messageListComp = node;
     }
@@ -31,13 +31,15 @@ class MessageList extends Component{
         return (
             <MessagesListComponent 
                 ref={this.getMessageListRef}
-                messages={this.props.messages}/>
+                messages={this.props.messages}
+                currentRoomId={this.props.currentRoomId}/>
         )
     }
 }
 
 const mapStateToProps = state => ({
-    messages: state.messagesState
+    messages: state.messagesState,
+    currentRoomId: state.currentRoomState.id
 });
 
 export default connect(mapStateToProps)(MessageList)

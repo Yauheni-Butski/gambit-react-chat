@@ -8,7 +8,7 @@ import { updateCurrentUser, updateRoomList } from './actions/index';
 import RoomList from "./containers/RoomList";
 import MessagesList from "./containers/MessagesList";
 import SendMessageForm from "./containers/SendMessageForm";
-import { NewRoomForm } from "./containers/NewRoomForm";
+import NewRoomForm from "./containers/NewRoomForm";
 
 import store from './store/store';
 
@@ -27,18 +27,18 @@ class App extends Component {
     });
   
     chatManager.connect()
-      .then(currentUser => {
-        store.dispatch(updateCurrentUser(currentUser));
+    .then(currentUser => {
+      store.dispatch(updateCurrentUser(currentUser));
 
-        //TODO. Move to method getRooms(). We call the same from here and RoomList
-        currentUser.getJoinableRooms()
-        .then(joinableRooms => {
-          let joinedRooms = currentUser.rooms;
-          store.dispatch(updateRoomList(joinableRooms, joinedRooms))
-        })
-        .catch(err => console.log('error on joinableRooms: ', err));
+      //TODO. Move to method getRooms(). We call the same from here and RoomList
+      currentUser.getJoinableRooms()
+      .then(joinableRooms => {
+        let joinedRooms = currentUser.rooms;
+        store.dispatch(updateRoomList(joinableRooms, joinedRooms))
       })
-      .catch(err => console.log('error on connecting: ', err));
+      .catch(err => console.log('error on joinableRooms: ', err));
+    })
+    .catch(err => console.log('error on connecting: ', err));
   }
 
   render() {

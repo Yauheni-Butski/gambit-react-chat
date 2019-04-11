@@ -21,7 +21,9 @@ class SendMessageForm extends Component {
 
     render(){
         return(
-            <SendMessageFormComponent sendMessage={this.sendMessageToServer}/>
+            <SendMessageFormComponent
+                sendMessage={this.sendMessageToServer}
+                disabled={!this.props.currentRoom.id}/>
         );
     }
 }

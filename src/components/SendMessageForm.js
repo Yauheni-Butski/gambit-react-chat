@@ -32,6 +32,7 @@ class SendMessageForm extends Component {
                 onSubmit={this.handleSubmit} 
                 className="send-message-form">
                 <input
+                    disabled={this.props.disabled}
                     onChange={this.handleChange}
                     value={this.state.newMessageText}
                     placeholder="Type your message and hit ENTER"
@@ -42,7 +43,8 @@ class SendMessageForm extends Component {
 }
 
 SendMessageForm.propTypes = {
-    sendMessage: PropTypes.func.isRequired
+    sendMessage: PropTypes.func.isRequired,
+    disabled: PropTypes.bool.isRequired
 }
 
 export default SendMessageForm
