@@ -39,6 +39,11 @@ export const updateCurrentUser = currentUser => ({
     currentUser
 });
 
+export const enterToRoom = roomId => ({
+    type: types.ENTER_TO_ROOM,
+    roomId
+})
+
 export const updateCurrentRoom = currentRoom => ({
     type: types.UPD_CURR_ROOM,
     currentRoom

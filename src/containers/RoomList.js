@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { messageReceived, clearMessages, updateRoomList, updateCurrentRoom } from '../actions/index';
+import { enterToRoom/* , messageReceived, clearMessages, updateRoomList, updateCurrentRoom */ } from '../actions/index';
 import RoomListComponent from '../components/RoomList'
 
 class RoomList extends Component{
@@ -10,9 +10,12 @@ class RoomList extends Component{
     }
 
     subscribeToRoom(roomId){
+
+      this.props.enterToRoom(roomId);
+
       /* TODO. Одно и тоже действие в NewRoomForm и RoomList. Как можно улучшить? */
       //clear messages state, for new room
-      this.props.clearMessages();
+      /* this.props.clearMessages();
 
       let currentUser = this.props.currentUser;
       currentUser.subscribeToRoomMultipart({
@@ -56,7 +59,7 @@ class RoomList extends Component{
           })
           .catch(err => console.log('error on joinableRooms: ', err));
       })
-      .catch(err => console.log('error on subscribing to room: ', err));
+      .catch(err => console.log('error on subscribing to room: ', err)); */
     }
 
     render(){
@@ -71,23 +74,26 @@ class RoomList extends Component{
 
 const mapStateToProps = state => ({
     rooms: state.roomsState,
-    currentUser: state.currentUserState,
+   /*  currentUser: state.currentUserState, */
     currentRoomId: state.currentRoomState.id
 });
 
 const mapDispatchToProps = dispatch => ({
-    onMessageReceived: (senderId, text) => {
+    enterToRoom: roomId => {
+      dispatch(enterToRoom(roomId))
+    },
+/*     onMessageReceived: (senderId, text) => {
        dispatch(messageReceived(senderId, text));
-    },
-    clearMessages: () => {
+    }, */
+/*     clearMessages: () => {
         dispatch(clearMessages());
-    },
-    populateRooms: (joinableRooms, joinedRooms) => {
+    }, */
+/*     populateRooms: (joinableRooms, joinedRooms) => {
         dispatch(updateRoomList(joinableRooms, joinedRooms));
-    },
-    updateCurrentRoom: (currentRoom) => {
+    }, */
+/*     updateCurrentRoom: (currentRoom) => {
         dispatch(updateCurrentRoom(currentRoom));
-    }
+    } */
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RoomList)
