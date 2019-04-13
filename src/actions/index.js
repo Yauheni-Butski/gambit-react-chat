@@ -1,7 +1,7 @@
 import * as types from '../constants/ActionTypes';
 
 let nextUserId = 0;
-
+/* OLD. DELETE */
 export const addUser = name => ({
     type: types.ADD_USER,
     id: nextUserId++,

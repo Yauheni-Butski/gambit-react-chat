@@ -48,7 +48,6 @@ function enterToRoomChannel(currentUser, action){
         .catch(err => console.log('error on joinableRooms: ', err));
       });
   
-  
       const unsubscribe = () => {
         currentUser.roomSubscriptions[action.roomId].cancel();
       }
@@ -75,7 +74,6 @@ function enterToRoomChannel(currentUser, action){
 
   function* enterToRoom(action){
     const currentUser = yield select(state => state.currentUserState);
-    //1. clear messages in current MessageList
     yield put(clearMessages());
 
     const chan = yield call(enterToRoomChannel, currentUser, action);

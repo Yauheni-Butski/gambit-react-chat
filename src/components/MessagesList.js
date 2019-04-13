@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Message from './Message';
 
-/* TODO. 1. Не могу превратить в functional component, так как использую ref на него в MessageList container */
+/* Use ref to this component in container for auto scrolling, so can't make it functional component. */
+/* Don't want to use forwarding ref. */
 class MessagesList extends Component {
     render(){
         if (!this.props.currentRoomId){

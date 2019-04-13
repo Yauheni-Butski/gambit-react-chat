@@ -31,6 +31,7 @@ class App extends Component {
       store.dispatch(updateCurrentUser(currentUser));
 
       //TODO. Move to method getRooms(). We call the same from here and RoomList
+      //TODO. Этот кусок можно в Saga тоже вынести. Уже из Саги будет вызов updateRoomList
       currentUser.getJoinableRooms()
       .then(joinableRooms => {
         let joinedRooms = currentUser.rooms;
