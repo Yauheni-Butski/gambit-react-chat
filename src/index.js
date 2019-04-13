@@ -1,18 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import store from './store/store'
 
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-
-//TODO. 1. Ещё упрощаем index.js. Только рендеринг <App />, а Provider и подключение store будет в <App /> над Chat элементом.
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
+    <App />,
     document.getElementById('root')
 );
 
