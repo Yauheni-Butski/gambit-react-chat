@@ -16,7 +16,7 @@ class SendMessageForm extends Component {
         currentUser.sendMessage({
             text: text,
             roomId: currentRoom.id
-          });
+        });
     }
 
     render(){

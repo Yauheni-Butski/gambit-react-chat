@@ -15,12 +15,6 @@ const roomsReducers = (state = DUMMY_DATA, action) => {
                 joinableRooms: action.joinableRooms,
                 joinedRooms: action.joinedRooms
             })
-/*         case types.ADD_ROOM:
-            return state.joinableRooms.concat([{
-                name: action.name
-            }]); */
-/*         case types.ROOM_LIST:
-            return action.rooms; */
         default:
             return state;
     }

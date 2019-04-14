@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types';
 
 function RoomList({rooms, subscribeToRoom, currentRoomId}) {
-    //combine joinableRooms and joinedRooms together
     let allRooms = [...rooms.joinableRooms, ...rooms.joinedRooms];
 
     return(
@@ -13,12 +12,10 @@ function RoomList({rooms, subscribeToRoom, currentRoomId}) {
                     const active = currentRoomId === room.id ? "active" : "";
                     return (
                         <li key={room.id} className={"room " + active}>
-                            <a 
-                                //TODO. 1. Вынести в функцию и проверять, если мы кликаем на уже активную, то ничего не делать
-                                onClick={() => { subscribeToRoom(room.id); }}
-                                href="#">
+                            <button 
+                                onClick={() => { subscribeToRoom(room.id); }}>
                                 # {room.name}
-                            </a>
+                            </button>
                         </li>
                     )
                 })}

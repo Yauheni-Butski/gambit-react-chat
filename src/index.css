@@ -75,14 +75,21 @@ html, body {
   color: var(--secondary-color);
 }
 
-.rooms-list .room a {
+.rooms-list .room button {
   color: var(--secondary-text-color);
   font-weight: 600;
   text-decoration: none;
-  
+  background: none;
+  border: none;
+  display: inline;
+  outline: none;
 }
 
-.rooms-list .room.active a {
+.rooms-list .room button:hover{
+  cursor: pointer;
+}
+
+.rooms-list .room.active button {
   color: var(--secondary-color);
 }
 

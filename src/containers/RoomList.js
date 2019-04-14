@@ -5,10 +5,23 @@ import RoomListComponent from '../components/RoomList'
 
 class RoomList extends Component{
 
+    constructor(){
+        super()
+        this.enterToRoom = this.enterToRoom.bind(this);
+    }
+
+    enterToRoom(roomId){
+        if (this.props.currentRoomId === roomId){
+            return;
+        }
+
+        this.props.enterToRoom(roomId);
+    }
+
     render(){
         return (
             <RoomListComponent 
-                subscribeToRoom={this.props.enterToRoom}
+                subscribeToRoom={this.enterToRoom}
                 rooms={this.props.rooms}
                 currentRoomId={this.props.currentRoomId}/>
         )
