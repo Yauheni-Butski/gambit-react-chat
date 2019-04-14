@@ -2,7 +2,7 @@
     box-sizing: border-box;
     padding: 10px;
     background-color: var(--main-color);
-    overflow: scroll;
+    overflow: auto;
     height: 100%;
   }
   

@@ -1,0 +1,11 @@
+.user-list {
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: var(--user-list-main-color);
+    overflow: auto;
+    height: 100%;
+}
+
+.user-list.closed{
+    display: none;
+}

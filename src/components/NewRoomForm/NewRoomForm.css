@@ -16,12 +16,14 @@
     width: 100%;
     height: 100%;
     background: var(--secondary-color);
+    border: 0;
   }
   
   .new-room-form button {
     background: var(--secondary-color);
     color: var(--main-text-color);
     border: 0;
+    cursor: pointer;
   } 
   
   .new-room-form input::placeholder {
@@ -31,12 +33,4 @@
   
   .new-room-form input:focus {
     outline-width: 0;
-  }
-  
-  .new-room-form input {
-    border: 0;
-  }
-  
-  .new-room-form button {
-    border: 0;
   }

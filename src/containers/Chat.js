@@ -9,6 +9,7 @@ import RoomList from "../containers/RoomList";
 import MessageList from "../containers/MessageList";
 import SendMessageForm from "../containers/SendMessageForm";
 import NewRoomForm from "../containers/NewRoomForm";
+import UserList from '../containers/UserList';
 
 class Chat extends Component {
 
@@ -37,19 +38,24 @@ class Chat extends Component {
   }
 
   render() {
+
+    const active = this.props.currentRoomId !== undefined ? "active" : "";
+    
     return (
-      <div className="app">
+      <div className={"app " + active}>
         <RoomList />
         <MessageList />
         <SendMessageForm />
         <NewRoomForm />
+        <UserList />
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  currentUser: state.currentUserState
+  currentUser: state.currentUserState,
+  currentRoomId: state.currentRoomState.id
 });
 
 const mapDispatchToProps = dispatch => ({
