@@ -1,7 +1,7 @@
 import { takeEvery, select, put, call } from 'redux-saga/effects';
 import { eventChannel, END } from 'redux-saga';
 import * as types from '../constants/ActionTypes';
-import { clearMessages, updateRoomList, updateCurrentRoom, fetchRoomList, newMessage, fetchUserList} from '../actions/index';
+import { clearMessages, updateRoomList, updateCurrentRoom, fetchRoomList, newMessage, fetchUserList, userOnlineStateChanged} from '../actions/index';
 
 function enterToRoomChannel(currentUser, action){
   return eventChannel(emit => {
@@ -12,6 +12,11 @@ function enterToRoomChannel(currentUser, action){
       hooks: {
         onMessage: (message) => {
           emit(newMessage(message));
+        },
+        //TODO. onUserJoined
+        //TODO. onUserLeft
+        onPresenceChanged: (state, user) => {
+          emit(userOnlineStateChanged(state, user));
         }
       }
     })
@@ -58,6 +63,9 @@ function* onEnterRoomChannelEmit(action){
       break;
     case types.FETCH_USER_LIST:
       yield put(fetchUserList());
+      break;
+    case types.USER_ONL_ST_CHANGED:
+      yield put(userOnlineStateChanged(action.state, action.user));
       break;
     default:
       break;

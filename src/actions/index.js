@@ -25,6 +25,12 @@ export const updateRoomOnlineUsers = (roomOnlineUsers) => ({
     roomOnlineUsers
 });
 
+export const userOnlineStateChanged = (state, user) => ({
+    type: types.USER_ONL_ST_CHANGED,
+    state,
+    user
+});
+
 export const updateCurrentUser = currentUser => ({
     type: types.UPD_CURR_USER,
     currentUser
