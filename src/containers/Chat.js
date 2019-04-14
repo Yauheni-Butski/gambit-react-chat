@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
 import { ChatManager, TokenProvider } from '@pusher/chatkit-client';
-import { tokenUrl, instanceLocator } from '../config';
+import { tokenUrl, instanceLocator } from '../constants/ChatKitConfig';
 import { updateCurrentUser, fetchRoomList } from '../actions/index';
 
 import RoomList from "../containers/RoomList";
