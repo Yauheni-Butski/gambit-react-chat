@@ -7,7 +7,9 @@ class UserList extends Component{
 
     render(){
         return (
-            <UserListComponent currentRoomId={this.props.currentRoomId}/>
+            <UserListComponent 
+                currentRoomId={this.props.currentRoomId}
+                onlineUsers={this.props.onlineUsers}/>
         )
     }
 }
@@ -19,7 +21,8 @@ class UserList extends Component{
 }); */
 
 const mapStateToProps = state => ({
-    currentRoomId: state.currentRoomState.id
+    currentRoomId: state.currentRoomState.id,
+    onlineUsers: state.usersState
 });
 
 export default connect(mapStateToProps)(UserList)

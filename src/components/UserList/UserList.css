@@ -9,3 +9,28 @@
 .user-list.closed{
     display: none;
 }
+
+.user-list > ul {
+    list-style-type: none;    
+    padding: 0;
+    overflow: scoll;
+}
+  
+.user-list li {
+    margin: 10px 0;
+}
+  
+.user-list > h3 {
+    margin: 5px 0;
+    color: var(--secondary-color);
+}
+  
+.user-list .user {
+    color: var(--secondary-text-color);
+    font-weight: 600;
+    text-decoration: none;
+    background: none;
+    border: none;
+    display: inline;
+    outline: none;
+}

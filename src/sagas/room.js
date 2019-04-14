@@ -1,7 +1,7 @@
 import { takeEvery, select, put, call } from 'redux-saga/effects';
 import { eventChannel, END } from 'redux-saga';
 import * as types from '../constants/ActionTypes';
-import { clearMessages, updateRoomList, updateCurrentRoom, fetchRoomList, newMessage} from '../actions/index';
+import { clearMessages, updateRoomList, updateCurrentRoom, fetchRoomList, newMessage, fetchUserList} from '../actions/index';
 
 function enterToRoomChannel(currentUser, action){
   return eventChannel(emit => {
@@ -18,6 +18,7 @@ function enterToRoomChannel(currentUser, action){
     .then(room => {
       emit(updateCurrentRoom(room));
       emit(fetchRoomList());
+      emit(fetchUserList());
     });
 
     const unsubscribe = () => {
@@ -50,10 +51,13 @@ function* onEnterRoomChannelEmit(action){
       yield put(updateCurrentRoom(action.currentRoom));
       break;
     case types.FETCH_ROOM_LIST:
-      yield put(fetchRoomList(action.currentUser));
+      yield put(fetchRoomList());
       break;
     case types.NEW_MESSAGE:
       yield put(newMessage(action.message));
+      break;
+    case types.FETCH_USER_LIST:
+      yield put(fetchUserList());
       break;
     default:
       break;
@@ -72,7 +76,7 @@ function* enterToRoom(action){
   yield takeEvery(chan, onEnterRoomChannelEmit);
 }
 
-function* refreshRoomList(action){
+function* refreshRoomList(){
     const currentUser = yield select(state => state.currentUserState);
 
     const chan = yield call(fetchRoomListChannel, currentUser);

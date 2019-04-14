@@ -1,13 +1,5 @@
 import * as types from '../constants/ActionTypes';
 
-let nextUserId = 0;
-/* OLD. DELETE */
-export const addUser = name => ({
-    type: types.ADD_USER,
-    id: nextUserId++,
-    name
-});
-
 export const clearMessages = () => ({
     type: types.CLEAR_MESSAGES
 });
@@ -24,9 +16,13 @@ export const newMessage = (message) => ({
     message
 });
 
-export const populateUsersList = users => ({
-    type: types.USER_LIST,
-    users
+export const fetchUserList = () => ({
+    type: types.FETCH_USER_LIST
+});
+
+export const updateRoomOnlineUsers = (roomOnlineUsers) => ({
+    type: types.UPD_ROOM_ONL_USERS,
+    roomOnlineUsers
 });
 
 export const updateCurrentUser = currentUser => ({

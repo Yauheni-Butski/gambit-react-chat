@@ -1,11 +1,11 @@
 import * as types from '../constants/ActionTypes';
 
-const DUMMY_DATA = {
+const INIT_DATA = {
     joinableRooms: [],
     joinedRooms: []
 }
 
-const roomsReducers = (state = DUMMY_DATA, action) => {
+const roomsReducers = (state = INIT_DATA, action) => {
     switch (action.type) {
         case types.UPD_ROOM_LIST:
             return Object.assign({}, state, {

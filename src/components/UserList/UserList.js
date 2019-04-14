@@ -3,23 +3,40 @@ import PropTypes from 'prop-types';
 
 import './UserList.css';
 
-function UserList({currentRoomId}) {
-    const closed = currentRoomId === undefined ? "closed" : "";
-    
+function UserList({currentRoomId, onlineUsers}) {
+    if(currentRoomId === undefined){
+        return (
+            <div className="user-list closed"></div>
+        )
+    }
+
     return (
-        <div className={"user-list " + closed}>
-            <h3>Users online:</h3>
+        <div className="user-list">
+            <ul>
+                <h3>Users online:</h3>
+                {onlineUsers.map(user => {
+                    return (
+                        <li key={user.id} className="user">
+                            - {user.name}
+                        </li>
+                    )
+                })}
+            </ul>
         </div>
     )
 }
 
 UserList.propTypes = {
-/*     messages: PropTypes.arrayOf(
+    onlineUsers: PropTypes.arrayOf(
         PropTypes.shape({
-            senderId: PropTypes.string.isRequired,
-            text: PropTypes.string.isRequired
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            avatarURL: PropTypes.string,
+            presence: PropTypes.shape({
+                state: PropTypes.string.isRequired
+            })
         }).isRequired
-    ).isRequired, */
+    ),
     currentRoomId: PropTypes.string
 }
 
