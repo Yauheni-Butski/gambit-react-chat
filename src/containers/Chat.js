@@ -6,7 +6,7 @@ import { tokenUrl, instanceLocator } from '../constants/ChatKitConfig';
 import { updateCurrentUser, fetchRoomList } from '../actions/index';
 
 import RoomList from "../containers/RoomList";
-import MessagesList from "../containers/MessagesList";
+import MessageList from "../containers/MessageList";
 import SendMessageForm from "../containers/SendMessageForm";
 import NewRoomForm from "../containers/NewRoomForm";
 
@@ -40,7 +40,7 @@ class Chat extends Component {
     return (
       <div className="app">
         <RoomList />
-        <MessagesList />
+        <MessageList />
         <SendMessageForm />
         <NewRoomForm />
       </div>

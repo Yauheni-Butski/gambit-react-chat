@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux'
-import MessagesListComponent from '../components/MessagesList'
+import MessageListComponent from '../components/MessageList/MessageList'
 
 class MessageList extends Component{
 
@@ -29,7 +29,7 @@ class MessageList extends Component{
 
     render(){
         return (
-            <MessagesListComponent 
+            <MessageListComponent 
                 ref={this.getMessageListRef}
                 messages={this.props.messages}
                 currentRoomId={this.props.currentRoomId}/>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { enterToRoom } from '../actions/index';
-import NewRoomFormComponent from '../components/NewRoomForm';
+import NewRoomFormComponent from '../components/NewRoomForm/NewRoomForm';
 
 class NewRoomForm extends Component{
 

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Message from './Message';
+import Message from '../Message/Message';
+
+import './MessageList.css';
 
 /* Use ref to this component in container for auto scrolling, so can't make it functional component. */
 /* Don't want to use forwarding ref. */
-class MessagesList extends Component {
+class MessageList extends Component {
     render(){
         if (!this.props.currentRoomId){
             return (
@@ -27,7 +29,7 @@ class MessagesList extends Component {
     }
 }
 
-MessagesList.propTypes = {
+MessageList.propTypes = {
     messages: PropTypes.arrayOf(
         PropTypes.shape({
             senderId: PropTypes.string.isRequired,
@@ -37,4 +39,4 @@ MessagesList.propTypes = {
     currentRoomId: PropTypes.string
 }
 
-export default MessagesList;
+export default MessageList;

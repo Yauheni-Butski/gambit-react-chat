@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
+import './RoomList.css';
+
 function RoomList({rooms, subscribeToRoom, currentRoomId}) {
     let allRooms = [...rooms.joinableRooms, ...rooms.joinedRooms];
 

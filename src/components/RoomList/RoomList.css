@@ -1,0 +1,40 @@
+.rooms-list {
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: var(--main-color);
+    overflow: scroll;
+    height: 100%;
+  }
+  
+  .rooms-list > ul {
+    list-style-type: none;    
+    padding: 0;
+    overflow: scoll;
+  }
+  
+  .rooms-list li {
+    margin: 10px 0;
+  }
+  
+  .rooms-list > h3 {
+    margin: 5px 0;
+    color: var(--secondary-color);
+  }
+  
+  .rooms-list .room button {
+    color: var(--secondary-text-color);
+    font-weight: 600;
+    text-decoration: none;
+    background: none;
+    border: none;
+    display: inline;
+    outline: none;
+  }
+  
+  .rooms-list .room button:hover{
+    cursor: pointer;
+  }
+  
+  .rooms-list .room.active button {
+    color: var(--secondary-color);
+  }
