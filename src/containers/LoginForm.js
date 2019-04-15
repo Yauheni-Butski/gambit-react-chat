@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
-import { connect } from 'react-redux'
-import LoginFormComponent from '../components/LoginForm/LoginForm'
+import { connect } from 'react-redux';
 import { tokenUrl, apiUrl } from '../constants/ChatKitConfig';
 import { loginUserName } from '../actions/index';
+
+import LoginFormComponent from '../components/LoginForm/LoginForm';
 
 class LoginForm extends Component {
 
@@ -39,7 +40,6 @@ class LoginForm extends Component {
             .then(res => {
                 var searchedUser = res.filter(el => el.id === userName);
                 if(searchedUser.length === 0){
-                    //TODO. Show message that user-name not found
                     this.setState({
                         message: "This username doesn't exist"
                     })

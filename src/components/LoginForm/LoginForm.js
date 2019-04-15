@@ -29,7 +29,7 @@ class LoginForm extends Component {
     handleChange(e){
         this.setState({
             username: e.target.value
-        })
+        });
     }
 
     render(){
@@ -38,7 +38,11 @@ class LoginForm extends Component {
                 <form 
                     onSubmit={this.handleSubmit}
                     className="login-form">
-                    {/*TODO. Показывать сообщение об ошибке */}
+                    <div 
+                        className="error-message"
+                        title={this.props.message}>
+                    {this.props.message}
+                    </div>
                     <input 
                         required
                         onChange={this.handleChange}
@@ -46,6 +50,17 @@ class LoginForm extends Component {
                         type="text"
                         placeholder="Enter you username" />
                     <button type="submit">Login</button>
+
+                    <div className="test-tips">
+                        <span className="tip-text">For test purpose use one of these users:</span>
+                        <ul>
+                            <li>gambit-admin</li>
+                            <li>test-user-1</li>
+                            <li>harrison-jhones</li>
+                            <li>r2d2</li>
+                            <li>dumb-john</li>
+                        </ul>
+                    </div>
                 </form>
             </div>
         )

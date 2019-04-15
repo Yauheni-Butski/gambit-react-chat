@@ -1,6 +1,6 @@
 .login-form-wrapper{
     width: 300px;
-    height: 200px;
+    height: 350px;
     border: 5px solid var(--main-color);
     border-radius: 6px;
     background-color: #ffffff;
@@ -17,10 +17,31 @@
     height: 100px;
     position: absolute;
     top: 0;
-    bottom: 0;
     left: 0;
     right: 0;
-    margin: auto auto;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.login-form-wrapper .login-form .error-message{
+    color: red;
+    margin-bottom: 10px;
+    position: absolute;
+    top: -30px;
+    width: 255px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.login-form-wrapper .login-form .test-tips{
+    margin-top: 20px;
+}
+
+.login-form-wrapper .login-form .test-tips .tip-text{
+    padding: 0 15px;
+    width: 230px;
+    display: inline-block;
 }
 
 .login-form-wrapper .login-form button{

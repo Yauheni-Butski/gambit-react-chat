@@ -13,8 +13,6 @@ function enterToRoomChannel(currentUser, action){
         onMessage: (message) => {
           emit(newMessage(message));
         },
-        //TODO. onUserJoined
-        //TODO. onUserLeft
         onPresenceChanged: (state, user) => {
           emit(userOnlineStateChanged(state, user));
         }

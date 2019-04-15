@@ -2,6 +2,7 @@
   --main-color: #5ea3d0;
   --secondary-color: white;
   --main-text-color: #3e5869;
+  --own-message-color: #269c5b;
   --secondary-text-color: #b0c7d6;
   --send-message-form: #F5F5F5;
   --user-list-main-color: #5ea3d0;
@@ -25,7 +26,6 @@ html, body {
   height: 100%;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 60px;
-  /*grid-gap: 0.5em;*/
   grid-template-areas: 
       "r m m m m m"
       "r m m m m m"

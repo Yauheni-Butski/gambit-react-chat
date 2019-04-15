@@ -20,8 +20,13 @@ class MessageList extends Component {
         return (
             <div className="message-list">
                 {this.props.messages.map((message, index) => {
+                    var messageOfClass = message.senderId === this.props.currentUserId ? "own" : "";
                     return (
-                        <Message key={index} username={message.senderId} text={message.text}/>
+                        <Message 
+                            key={index}
+                            username={message.senderId}
+                            text={message.text}
+                            messageOfClass={messageOfClass}/>
                     )
                 })}
             </div>
@@ -36,7 +41,8 @@ MessageList.propTypes = {
             text: PropTypes.string.isRequired
         }).isRequired
     ).isRequired,
-    currentRoomId: PropTypes.string
+    currentRoomId: PropTypes.string,
+    currentUserId: PropTypes.string
 }
 
 export default MessageList;

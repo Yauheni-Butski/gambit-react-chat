@@ -32,14 +32,16 @@ class MessageList extends Component{
             <MessageListComponent 
                 ref={this.getMessageListRef}
                 messages={this.props.messages}
-                currentRoomId={this.props.currentRoomId}/>
+                currentRoomId={this.props.currentRoomId}
+                currentUserId={this.props.currentUserId}/>
         )
     }
 }
 
 const mapStateToProps = state => ({
     messages: state.messagesState,
-    currentRoomId: state.currentRoomState.id
+    currentRoomId: state.currentRoomState.id,
+    currentUserId: state.currentUserState.id
 });
 
 export default connect(mapStateToProps)(MessageList)

@@ -14,12 +14,6 @@ class UserList extends Component{
     }
 }
 
-/* const mapDispatchToProps = dispatch => ({
-    enterToRoom: roomId => {
-        dispatch(enterToRoom(roomId))
-    }
-}); */
-
 const mapStateToProps = state => ({
     currentRoomId: state.currentRoomState.id,
     onlineUsers: state.usersState

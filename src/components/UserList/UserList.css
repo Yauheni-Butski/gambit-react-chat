@@ -26,7 +26,7 @@
 }
   
 .user-list .user {
-    color: var(--secondary-text-color);
+    color: #daffda;
     font-weight: 600;
     text-decoration: none;
     background: none;

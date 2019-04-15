@@ -29,6 +29,7 @@
     border: none;
     display: inline;
     outline: none;
+    font-size: 16px;
   }
   
   .rooms-list .room button:hover{

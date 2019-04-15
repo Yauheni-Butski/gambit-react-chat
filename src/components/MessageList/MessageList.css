@@ -5,6 +5,7 @@
     height: 100%;
     overflow: auto;
     background: var(--secondary-color);
+    padding: 0 20px;
   }
   
   .message-list .join-room {

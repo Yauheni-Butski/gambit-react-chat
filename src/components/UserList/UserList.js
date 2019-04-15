@@ -10,11 +10,12 @@ function UserList({currentRoomId, onlineUsers}) {
         )
     }
 
+    var userList = onlineUsers.sort((a, b) => a.id - b.id);
     return (
         <div className="user-list">
             <ul>
                 <h3>Users online:</h3>
-                {onlineUsers.map(user => {
+                {userList.map(user => {
                     return (
                         <li key={user.id} className="user">
                             - {user.name}

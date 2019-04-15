@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './RoomList.css';
 
 function RoomList({rooms, subscribeToRoom, currentRoomId}) {
-    let allRooms = [...rooms.joinableRooms, ...rooms.joinedRooms];
+    let allRooms = [...rooms.joinableRooms, ...rooms.joinedRooms].sort((a, b) => a.id - b.id);
 
     return(
         <div className="rooms-list">

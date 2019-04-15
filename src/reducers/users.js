@@ -2,11 +2,6 @@ import * as types from '../constants/ActionTypes';
 
 const usersReducers = (state = [], action) => {
     switch (action.type) {
-/*         case types.ADD_USER:
-            return state.concat([{
-                name: action.name,
-                id: action.id
-            }]); */
         case types.USER_ONL_ST_CHANGED:
             let goToOnline = action.state.current === "online";
             if(goToOnline){
