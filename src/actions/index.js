@@ -16,6 +16,11 @@ export const newMessage = (message) => ({
     message
 });
 
+export const loginUserName = (userName) => ({
+    type: types.LOGIN_USER_NAME,
+    userName
+});
+
 export const fetchUserList = () => ({
     type: types.FETCH_USER_LIST
 });

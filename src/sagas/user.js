@@ -3,7 +3,6 @@ import * as types from '../constants/ActionTypes';
 import { updateRoomOnlineUsers } from '../actions/index';
 
 function* fetchRoomUserList(){
-    console.log('Saga,FetchRoomUserList');
     const currentRoom = yield select(state => state.currentRoomState);
     const roomUsers = currentRoom.users;
     const onlineUsers = roomUsers.filter(el => el.presence.state === 'online');

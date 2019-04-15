@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { Redirect } from "react-router-dom";
 
 import { ChatManager, TokenProvider } from '@pusher/chatkit-client';
 import { tokenUrl, instanceLocator } from '../constants/ChatKitConfig';
@@ -14,25 +15,27 @@ import UserList from '../containers/UserList';
 class Chat extends Component {
 
   componentDidMount() {
-    const chatManager = new ChatManager({
-      instanceLocator,
-      userId: 'gambit-admin',
-      tokenProvider: new TokenProvider({
-        url: tokenUrl
+    if (this.props.loginUserName){
+      const chatManager = new ChatManager({
+        instanceLocator,
+        userId: this.props.loginUserName,
+        tokenProvider: new TokenProvider({
+          url: tokenUrl
+        })
+      });
+  
+      chatManager.connect()
+      .then(currentUser => {
+        this.props.updateCurrentUser(currentUser);
+        this.props.getRoomList();
       })
-    });
-
-    chatManager.connect()
-    .then(currentUser => {
-      this.props.updateCurrentUser(currentUser);
-      this.props.getRoomList();
-    })
-    .catch(err => console.log('error on connecting: ', err));
+      .catch(err => console.log('error on connecting: ', err));
+    }
   }
 
   componentWillUnmount() {
     let currentUser = this.props.currentUser;
-    if (currentUser){
+    if (currentUser.id){
       currentUser.disconnect();
     }
   }
@@ -40,6 +43,9 @@ class Chat extends Component {
   render() {
 
     const active = this.props.currentRoomId !== undefined ? "active" : "";
+    if (!this.props.loginUserName){
+      return <Redirect to={"/"} />
+    }
     
     return (
       <div className={"app " + active}>
@@ -55,7 +61,8 @@ class Chat extends Component {
 
 const mapStateToProps = state => ({
   currentUser: state.currentUserState,
-  currentRoomId: state.currentRoomState.id
+  currentRoomId: state.currentRoomState.id,
+  loginUserName: state.loginState.userName
 });
 
 const mapDispatchToProps = dispatch => ({
