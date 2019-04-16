@@ -22,7 +22,10 @@ class NewRoomForm extends Component {
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.addNewRoom(this.state.newRoomName);
+        let newRoomName = this.state.newRoomName;
+        newRoomName.substring(0, Math.min(60, newRoomName.length));
+        
+        this.props.addNewRoom(newRoomName);
         this.setState({
             newRoomName: ''
         });
@@ -36,7 +39,8 @@ class NewRoomForm extends Component {
                     <input
                         onChange={this.handleChange}
                         value={this.state.newRoomName}
-                        type="text" 
+                        type="text"
+                        maxLength="60"
                         placeholder="Create a room"
                         required />
                     <button id="create-room-btn" type="submit">+</button>

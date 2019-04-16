@@ -1,11 +1,13 @@
-import { takeEvery, put } from 'redux-saga/effects';
+import { takeEvery, select, put } from 'redux-saga/effects';
 import * as types from '../constants/ActionTypes';
 import { messageReceived } from '../actions';
 
 function* onNewMessageReceived(action){
     var message = action.message;
+    const currentRoom = yield select(state => state.currentRoomState);
 
-    for (let i=0; i < message.parts.length; i++){
+    if(currentRoom.id === undefined || message.roomId === currentRoom.id){
+      for (let i=0; i < message.parts.length; i++){
         let messagePart = message.parts[i];
         let text = '';
 
@@ -24,6 +26,7 @@ function* onNewMessageReceived(action){
         }
         
         yield put(messageReceived(message.senderId, text));
+      }
     }
 }
 

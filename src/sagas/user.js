@@ -3,6 +3,7 @@ import * as types from '../constants/ActionTypes';
 import { updateRoomOnlineUsers } from '../actions';
 
 function* fetchRoomUserList(){
+    //TODO. Только тут нам нужен объект currentRoom. Хотя возможно и это не нужно. Мы можем из room отсылать users
     const currentRoom = yield select(state => state.currentRoomState);
     const roomUsers = currentRoom.users;
     const onlineUsers = roomUsers.filter(el => el.presence.state === 'online');

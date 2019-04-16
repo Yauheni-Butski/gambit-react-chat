@@ -3,18 +3,28 @@ import { eventChannel, END } from 'redux-saga';
 import * as types from '../constants/ActionTypes';
 import { clearMessages, updateRoomList, updateCurrentRoom, fetchRoomList, newMessage, fetchUserList, userOnlineStateChanged} from '../actions';
 
-function enterToRoomChannel(currentUser, action){
+//TODO. Тут не нужен объект currentRoom
+function enterToRoomChannel(currentUser, currentRoom, action){
   return eventChannel(emit => {
-
+    //unsubscribe from prev room doesn't work...so I will filter incoming events by active roomId
+    //if exist curr. room ... currentUser.roomSubscriptions[currentRoom.id].cancel()
     currentUser.subscribeToRoomMultipart({
       roomId: action.roomId,
       messageLimit: 20,
       hooks: {
         onMessage: (message) => {
-          emit(newMessage(message));
+            emit(newMessage(message));
         },
         onPresenceChanged: (state, user) => {
-          emit(userOnlineStateChanged(state, user));
+          //TODO. Тоже пока не корректно работает
+          if (currentRoom.id === undefined || currentRoom.id === action.roomId){
+            emit(userOnlineStateChanged(state, user));
+          }
+          else{
+            console.log('Состояние не прошло');
+            console.log('Current room id', currentRoom.id);
+            console.log('Action room id', action.roomId);
+          }
         }
       }
     })
@@ -54,9 +64,13 @@ function* onChannelEmit(action){
 
 function* enterToRoom(action){
   const currentUser = yield select(state => state.currentUserState);
+  const currentRoom = yield select(state => state.currentRoomState);//TODO. Тут не нужно
   yield put(clearMessages());
 
-  const chan = yield call(enterToRoomChannel, currentUser, action);
+  //TODO. Мы должны сначала сразу установить currentRoomId = action.roomId,
+  //затем уже подключаться, так как при подключении сразу пойдут сообщения
+  //и потом уже установить объект currentRoom
+  const chan = yield call(enterToRoomChannel, currentUser, currentRoom, action);
   yield takeEvery(chan, onChannelEmit);
 }
 
