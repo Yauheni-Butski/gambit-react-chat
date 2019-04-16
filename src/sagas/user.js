@@ -10,7 +10,6 @@ function* fetchRoomUserList(){
     yield put(updateRoomOnlineUsers(onlineUsers));
 }
 
-
 const userSaga = function* () {
     yield takeEvery(types.FETCH_USER_LIST, fetchRoomUserList);
 }

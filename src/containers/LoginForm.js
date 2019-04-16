@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import { connect } from 'react-redux';
-import { tokenUrl, apiUrl } from '../constants/ChatKitConfig';
+
+import { authorizeUser } from '../services/login';
 import { loginUserName } from '../actions';
-//TODO. МОжно назвать index.js и указывать толкьо папку!! И везде так посмотреть.
 import LoginFormComponent from '../components/LoginForm';
 
 class LoginForm extends Component {
@@ -17,45 +17,22 @@ class LoginForm extends Component {
         this.loginToChat = this.loginToChat.bind(this);
     }
 
-    //TODO. Вынести в сервис
     loginToChat(userName){
-        //TODO. Вынести в другое место
-        fetch(tokenUrl, {
-            method: 'POST',
-            body: JSON.stringify({
-                "grant_type": "client_credentials",
-                "user_id": 'gambit-admin' //super-user id for getting token. limitation of test server
-            })
-        })
-        .then(result => result.json())
-        .then(result => {
-
-            fetch(apiUrl + '/users?limit=100' , {
-                method: 'GET',
-                headers: {
-                    'Authorization': 'Bearer ' + result.access_token
-                }
-            })
-            .then(res => res.json())
-            .then(res => {
-                var searchedUser = res.filter(el => el.id === userName);
-                if(searchedUser.length === 0){
-                    this.setState({
-                        message: "This username doesn't exist"
-                    })
-                }
-                else{
-                    this.props.saveUserName(searchedUser[0].id);
+        authorizeUser(userName)
+        .then(user => {
+            if(user === undefined){
+                this.setState({
+                    message: "This username doesn't exist"
+                })
+            }
+            else{
+                this.props.saveUserName(user.id);
                     this.setState({
                         redirectToChat: true
                     });
-                }
-            })
-            .catch(error => { console.log(error); })
+            }
         })
         .catch(error => { console.log(error); })
-
-
     }
 
     render(){
