@@ -1,6 +1,6 @@
 import { takeEvery, put } from 'redux-saga/effects';
 import * as types from '../constants/ActionTypes';
-import { messageReceived } from '../actions/index';
+import { messageReceived } from '../actions';
 
 function* onNewMessageReceived(action){
     var message = action.message;

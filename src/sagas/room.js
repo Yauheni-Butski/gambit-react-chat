@@ -1,7 +1,7 @@
 import { takeEvery, select, put, call } from 'redux-saga/effects';
 import { eventChannel, END } from 'redux-saga';
 import * as types from '../constants/ActionTypes';
-import { clearMessages, updateRoomList, updateCurrentRoom, fetchRoomList, newMessage, fetchUserList, userOnlineStateChanged} from '../actions/index';
+import { clearMessages, updateRoomList, updateCurrentRoom, fetchRoomList, newMessage, fetchUserList, userOnlineStateChanged} from '../actions';
 
 function enterToRoomChannel(currentUser, action){
   return eventChannel(emit => {
@@ -48,30 +48,8 @@ function fetchRoomListChannel(currentUser){
   });
 }
 
-function* onEnterRoomChannelEmit(action){
-  switch(action.type){
-    case types.UPD_CURR_ROOM:
-      yield put(updateCurrentRoom(action.currentRoom));
-      break;
-    case types.FETCH_ROOM_LIST:
-      yield put(fetchRoomList());
-      break;
-    case types.NEW_MESSAGE:
-      yield put(newMessage(action.message));
-      break;
-    case types.FETCH_USER_LIST:
-      yield put(fetchUserList());
-      break;
-    case types.USER_ONL_ST_CHANGED:
-      yield put(userOnlineStateChanged(action.state, action.user));
-      break;
-    default:
-      break;
-  }
-}
-
-function* onFetchRoomListmChannelEmit(action){
-  yield put(updateRoomList(action.joinableRooms, action.joinedRooms));
+function* onChannelEmit(action){
+  yield put(action);
 }
 
 function* enterToRoom(action){
@@ -79,14 +57,14 @@ function* enterToRoom(action){
   yield put(clearMessages());
 
   const chan = yield call(enterToRoomChannel, currentUser, action);
-  yield takeEvery(chan, onEnterRoomChannelEmit);
+  yield takeEvery(chan, onChannelEmit);
 }
 
 function* refreshRoomList(){
     const currentUser = yield select(state => state.currentUserState);
 
     const chan = yield call(fetchRoomListChannel, currentUser);
-    yield takeEvery(chan, onFetchRoomListmChannelEmit);
+    yield takeEvery(chan, onChannelEmit);
 }
 
 const roomSaga = function* () {

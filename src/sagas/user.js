@@ -1,6 +1,6 @@
 import { takeEvery, put, select } from 'redux-saga/effects';
 import * as types from '../constants/ActionTypes';
-import { updateRoomOnlineUsers } from '../actions/index';
+import { updateRoomOnlineUsers } from '../actions';
 
 function* fetchRoomUserList(){
     const currentRoom = yield select(state => state.currentRoomState);

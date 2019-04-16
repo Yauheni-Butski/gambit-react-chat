@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux'
-import SendMessageFormComponent from '../components/SendMessageForm/SendMessageForm'
+import SendMessageFormComponent from '../components/SendMessageForm'
 
 class SendMessageForm extends Component {
 

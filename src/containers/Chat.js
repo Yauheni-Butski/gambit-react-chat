@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 
 import { ChatManager, TokenProvider } from '@pusher/chatkit-client';
 import { tokenUrl, instanceLocator } from '../constants/ChatKitConfig';
-import { updateCurrentUser, fetchRoomList } from '../actions/index';
+import { updateCurrentUser, fetchRoomList } from '../actions';
 
 import RoomList from "../containers/RoomList";
 import MessageList from "../containers/MessageList";

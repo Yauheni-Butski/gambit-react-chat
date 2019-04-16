@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import { connect } from 'react-redux';
 import { tokenUrl, apiUrl } from '../constants/ChatKitConfig';
-import { loginUserName } from '../actions/index';
-
-import LoginFormComponent from '../components/LoginForm/LoginForm';
+import { loginUserName } from '../actions';
+//TODO. МОжно назвать index.js и указывать толкьо папку!! И везде так посмотреть.
+import LoginFormComponent from '../components/LoginForm';
 
 class LoginForm extends Component {
 
@@ -17,13 +17,13 @@ class LoginForm extends Component {
         this.loginToChat = this.loginToChat.bind(this);
     }
 
+    //TODO. Вынести в сервис
     loginToChat(userName){
         //TODO. Вынести в другое место
         fetch(tokenUrl, {
             method: 'POST',
             body: JSON.stringify({
                 "grant_type": "client_credentials",
-                "su": true,
                 "user_id": 'gambit-admin' //super-user id for getting token. limitation of test server
             })
         })

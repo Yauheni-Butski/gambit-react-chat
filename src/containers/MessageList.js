@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux'
-import MessageListComponent from '../components/MessageList/MessageList'
+import MessageListComponent from '../components/MessageList'
 
 class MessageList extends Component{
 
