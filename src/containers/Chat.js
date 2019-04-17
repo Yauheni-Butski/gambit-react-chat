@@ -61,7 +61,7 @@ class Chat extends Component {
 
 const mapStateToProps = state => ({
   currentUser: state.currentUserState,
-  currentRoomId: state.currentRoomState.id,
+  currentRoomId: state.currentRoomState.roomManager.id,
   loginUserName: state.loginState.userName
 });
 

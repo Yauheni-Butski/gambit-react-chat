@@ -30,11 +30,18 @@ export const updateRoomOnlineUsers = (roomOnlineUsers) => ({
     roomOnlineUsers
 });
 
-export const userOnlineStateChanged = (state, user) => ({
+export const userOnlineStateChanged = (state, user, roomId) => ({
     type: types.USER_ONL_ST_CHANGED,
     state,
-    user
+    user,
+    roomId
 });
+
+export const updateRoomUserStatus = (user, onlineStatus ) => ({
+    type: types.UPD_ROOM_USER_STATUS,
+    user,
+    onlineStatus
+})
 
 export const updateCurrentUser = currentUser => ({
     type: types.UPD_CURR_USER,
@@ -46,10 +53,15 @@ export const enterToRoom = roomId => ({
     roomId
 })
 
-export const updateCurrentRoom = currentRoom => ({
-    type: types.UPD_CURR_ROOM,
-    currentRoom
+export const updateCurrentRoomManager = currentRoomManager => ({
+    type: types.UPD_CURR_ROOM_MNGR,
+    currentRoomManager
 });
+
+export const updateCurrentRoomId = roomId => ({
+    type: types.UPD_CURR_ROOM_ID,
+    roomId
+})
 
 export const fetchRoomList = () => ({
     type: types.FETCH_ROOM_LIST

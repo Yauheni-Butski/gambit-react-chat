@@ -6,6 +6,7 @@ import UserListComponent from '../components/UserList';
 class UserList extends Component{
 
     render(){
+        console.log(this.props.onlineUsers); //TODO. ПРоверить почему несколько раз вызывается
         return (
             <UserListComponent 
                 currentRoomId={this.props.currentRoomId}
@@ -15,7 +16,7 @@ class UserList extends Component{
 }
 
 const mapStateToProps = state => ({
-    currentRoomId: state.currentRoomState.id,
+    currentRoomId: state.currentRoomState.roomManager.id,
     onlineUsers: state.usersState
 });
 

@@ -30,7 +30,7 @@ class RoomList extends Component{
 
 const mapStateToProps = state => ({
     rooms: state.roomsState,
-    currentRoomId: state.currentRoomState.id
+    currentRoomId: state.currentRoomState.roomManager.id
 });
 
 const mapDispatchToProps = dispatch => ({

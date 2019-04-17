@@ -12,10 +12,10 @@ class SendMessageForm extends Component {
 
     sendMessageToServer(text){
         let currentUser = this.props.currentUser;
-        let currentRoom = this.props.currentRoom;
+        let currentRoomManager = this.props.currentRoomManager;
         currentUser.sendMessage({
             text: text,
-            roomId: currentRoom.id
+            roomId: currentRoomManager.id //TODO. TEMP. Берём id из другого свойства
         });
     }
 
@@ -23,14 +23,14 @@ class SendMessageForm extends Component {
         return(
             <SendMessageFormComponent
                 sendMessage={this.sendMessageToServer}
-                disabled={!this.props.currentRoom.id}/>
+                disabled={!this.props.currentRoomManager.id}/> //TODO. TEMP. Берём id из другого свойства
         );
     }
 }
 
 const mapStateToProps = state => ({
     currentUser: state.currentUserState,
-    currentRoom: state.currentRoomState
+    currentRoomManager: state.currentRoomState.roomManager
 });
 
 export default connect(mapStateToProps)(SendMessageForm)

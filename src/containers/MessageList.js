@@ -40,7 +40,7 @@ class MessageList extends Component{
 
 const mapStateToProps = state => ({
     messages: state.messagesState,
-    currentRoomId: state.currentRoomState.id,
+    currentRoomId: state.currentRoomState.roomManager.id,
     currentUserId: state.currentUserState.id
 });
 

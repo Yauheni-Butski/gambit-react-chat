@@ -1,10 +1,16 @@
 import * as types from '../constants/ActionTypes';
 
-const currentRoomReducer = (state = {}, action) => {
+const INIT_DATA = {
+    roomId: undefined,
+    roomManager: {}
+}
+
+const currentRoomReducer = (state = INIT_DATA, action) => {
     switch (action.type) {
-        case types.UPD_CURR_ROOM:
-            //as I need to store the whole object once and will not update their property, I set directly
-            return state = action.currentRoom;
+        case types.UPD_CURR_ROOM_MNGR:
+            return state = Object.assign({}, state, { roomManager: action.currentRoomManager });
+        case types.UPD_CURR_ROOM_ID:
+            return state = Object.assign({}, state, { roomId: action.roomId });
         default:
             return state;
     }

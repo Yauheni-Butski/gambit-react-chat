@@ -1,10 +1,9 @@
 import { takeEvery, select, put, call } from 'redux-saga/effects';
 import { eventChannel, END } from 'redux-saga';
 import * as types from '../constants/ActionTypes';
-import { clearMessages, updateRoomList, updateCurrentRoom, fetchRoomList, newMessage, fetchUserList, userOnlineStateChanged} from '../actions';
+import { clearMessages, updateRoomList, updateCurrentRoomManager, fetchRoomList, newMessage, fetchUserList, userOnlineStateChanged, updateCurrentRoomId} from '../actions';
 
-//TODO. Тут не нужен объект currentRoom
-function enterToRoomChannel(currentUser, currentRoom, action){
+function enterToRoomChannel(currentUser, action){
   return eventChannel(emit => {
     //unsubscribe from prev room doesn't work...so I will filter incoming events by active roomId
     //if exist curr. room ... currentUser.roomSubscriptions[currentRoom.id].cancel()
@@ -16,20 +15,12 @@ function enterToRoomChannel(currentUser, currentRoom, action){
             emit(newMessage(message));
         },
         onPresenceChanged: (state, user) => {
-          //TODO. Тоже пока не корректно работает
-          if (currentRoom.id === undefined || currentRoom.id === action.roomId){
-            emit(userOnlineStateChanged(state, user));
-          }
-          else{
-            console.log('Состояние не прошло');
-            console.log('Current room id', currentRoom.id);
-            console.log('Action room id', action.roomId);
-          }
+            emit(userOnlineStateChanged(state, user, action.roomId));
         }
       }
     })
     .then(room => {
-      emit(updateCurrentRoom(room));
+      emit(updateCurrentRoomManager(room));
       emit(fetchRoomList());
       emit(fetchUserList());
     });
@@ -39,7 +30,7 @@ function enterToRoomChannel(currentUser, currentRoom, action){
     }
 
     return unsubscribe;
-  }); 
+  });
 }
 
 function fetchRoomListChannel(currentUser){
@@ -64,13 +55,10 @@ function* onChannelEmit(action){
 
 function* enterToRoom(action){
   const currentUser = yield select(state => state.currentUserState);
-  const currentRoom = yield select(state => state.currentRoomState);//TODO. Тут не нужно
   yield put(clearMessages());
+  yield put(updateCurrentRoomId(action.roomId));
 
-  //TODO. Мы должны сначала сразу установить currentRoomId = action.roomId,
-  //затем уже подключаться, так как при подключении сразу пойдут сообщения
-  //и потом уже установить объект currentRoom
-  const chan = yield call(enterToRoomChannel, currentUser, currentRoom, action);
+  const chan = yield call(enterToRoomChannel, currentUser, action);
   yield takeEvery(chan, onChannelEmit);
 }
 

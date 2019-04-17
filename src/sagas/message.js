@@ -4,9 +4,9 @@ import { messageReceived } from '../actions';
 
 function* onNewMessageReceived(action){
     var message = action.message;
-    const currentRoom = yield select(state => state.currentRoomState);
+    const currentRoomId = yield select(state => state.currentRoomState.roomId);
 
-    if(currentRoom.id === undefined || message.roomId === currentRoom.id){
+    if(currentRoomId === undefined || message.roomId === currentRoomId){
       for (let i=0; i < message.parts.length; i++){
         let messagePart = message.parts[i];
         let text = '';
