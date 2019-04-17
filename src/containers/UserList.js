@@ -6,7 +6,6 @@ import UserListComponent from '../components/UserList';
 class UserList extends Component{
 
     render(){
-        console.log(this.props.onlineUsers); //TODO. ПРоверить почему несколько раз вызывается
         return (
             <UserListComponent 
                 currentRoomId={this.props.currentRoomId}
