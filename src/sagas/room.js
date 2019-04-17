@@ -1,7 +1,7 @@
 import { takeEvery, select, put, call } from 'redux-saga/effects';
 import { eventChannel, END } from 'redux-saga';
 import * as types from '../constants/ActionTypes';
-import { clearMessages, updateRoomList, updateCurrentRoomManager, fetchRoomList, newMessage, fetchUserList, userOnlineStateChanged, updateCurrentRoomId} from '../actions';
+import { clearMessages, updateRoomList, fetchRoomList, newMessage, fetchUserList, userOnlineStateChanged, updateCurrentRoomId} from '../actions';
 
 function enterToRoomChannel(currentUser, action){
   return eventChannel(emit => {
@@ -20,9 +20,8 @@ function enterToRoomChannel(currentUser, action){
       }
     })
     .then(room => {
-      emit(updateCurrentRoomManager(room));
       emit(fetchRoomList());
-      emit(fetchUserList());
+      emit(fetchUserList(room.users));
     });
 
     const unsubscribe = () => {

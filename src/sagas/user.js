@@ -2,12 +2,8 @@ import { takeEvery, put, select } from 'redux-saga/effects';
 import * as types from '../constants/ActionTypes';
 import { updateRoomOnlineUsers, updateRoomUserStatus } from '../actions';
 
-function* fetchRoomUserList(){
-    //TODO. Только тут нам нужен объект currentRoom. Хотя возможно и это не нужно. Мы можем из room отсылать users
-    const currentRoomManager = yield select(state => state.currentRoomState.roomManager);
-    const roomUsers = currentRoomManager.users;
-    const onlineUsers = roomUsers.filter(el => el.presence.state === 'online');
-
+function* fetchRoomUserList(action){
+    const onlineUsers = action.roomUsers.filter(el => el.presence.state === 'online');
     yield put(updateRoomOnlineUsers(onlineUsers));
 }
 

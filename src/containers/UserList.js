@@ -16,7 +16,7 @@ class UserList extends Component{
 }
 
 const mapStateToProps = state => ({
-    currentRoomId: state.currentRoomState.roomManager.id,
+    currentRoomId: state.currentRoomState.roomId,
     onlineUsers: state.usersState
 });
 

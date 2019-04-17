@@ -8,7 +8,6 @@ export const UPD_ROOM_USER_STATUS = "UPD_ROOM_USER_STATUS";
 export const LOGIN_USER_NAME = "LOGIN_USER_NAME";
 export const ENTER_TO_ROOM = "ENTER_TO_ROOM"; //sage
 export const FETCH_ROOM_LIST = "FETCH_ROOM_LIST"; //saga
-export const UPD_CURR_ROOM_MNGR = "UPD_CURR_ROOM_MNGR";
 export const UPD_CURR_ROOM_ID = "UPD_CURR_ROOM_ID";
 export const UPD_CURR_USER = "UPD_CURR_USER";
 export const UPD_ROOM_LIST = "UPD_ROOM_LIST";

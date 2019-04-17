@@ -21,8 +21,9 @@ export const loginUserName = (userName) => ({
     userName
 });
 
-export const fetchUserList = () => ({
-    type: types.FETCH_USER_LIST
+export const fetchUserList = (roomUsers) => ({
+    type: types.FETCH_USER_LIST,
+    roomUsers
 });
 
 export const updateRoomOnlineUsers = (roomOnlineUsers) => ({
@@ -52,11 +53,6 @@ export const enterToRoom = roomId => ({
     type: types.ENTER_TO_ROOM,
     roomId
 })
-
-export const updateCurrentRoomManager = currentRoomManager => ({
-    type: types.UPD_CURR_ROOM_MNGR,
-    currentRoomManager
-});
 
 export const updateCurrentRoomId = roomId => ({
     type: types.UPD_CURR_ROOM_ID,

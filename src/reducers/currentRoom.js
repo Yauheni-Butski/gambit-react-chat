@@ -1,14 +1,11 @@
 import * as types from '../constants/ActionTypes';
 
 const INIT_DATA = {
-    roomId: undefined,
-    roomManager: {}
+    roomId: undefined
 }
 
 const currentRoomReducer = (state = INIT_DATA, action) => {
     switch (action.type) {
-        case types.UPD_CURR_ROOM_MNGR:
-            return state = Object.assign({}, state, { roomManager: action.currentRoomManager });
         case types.UPD_CURR_ROOM_ID:
             return state = Object.assign({}, state, { roomId: action.roomId });
         default:
