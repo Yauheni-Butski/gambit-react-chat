@@ -13,6 +13,7 @@ class LoginForm extends Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleUserNameClick = this.handleUserNameClick.bind(this);
     }
 
     handleSubmit(e){
@@ -29,6 +30,12 @@ class LoginForm extends Component {
     handleChange(e){
         this.setState({
             username: e.target.value
+        });
+    }
+
+    handleUserNameClick(e){
+        this.setState({
+            username: e.target.textContent
         });
     }
 
@@ -52,13 +59,13 @@ class LoginForm extends Component {
                     <button type="submit">Login</button>
 
                     <div className="test-tips">
-                        <span className="tip-text">For test purpose use one of these users:</span>
+                        <span className="tip-text">For test purpose use one of these users (you can just click on userName):</span>
                         <ul>
-                            <li>gambit-admin</li>
-                            <li>test-user-1</li>
-                            <li>harrison-jhones</li>
-                            <li>r2d2</li>
-                            <li>dumb-john</li>
+                            <li onClick={this.handleUserNameClick}>gambit-admin</li>
+                            <li onClick={this.handleUserNameClick}>test-user-1</li>
+                            <li onClick={this.handleUserNameClick}>harrison-jhones</li>
+                            <li onClick={this.handleUserNameClick}>r2d2</li>
+                            <li onClick={this.handleUserNameClick}>dumb-john</li>
                         </ul>
                     </div>
                 </form>
