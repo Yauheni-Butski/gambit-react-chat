@@ -17,6 +17,14 @@ class LoginForm extends Component {
         this.loginToChat = this.loginToChat.bind(this);
     }
 
+    componentDidMount() {
+        if (this.props.loginUserName){
+            this.setState({
+                redirectToChat: true
+            });
+        }
+    }
+
     loginToChat(userName){
         authorizeUser(userName)
         .then(user => {
@@ -48,8 +56,7 @@ class LoginForm extends Component {
 }
 
 const mapStateToProps = state => ({
-    currentUser: state.currentUserState,
-    loginState: state.loginState
+    loginUserName: state.loginState.userName
 });
 
 const mapDispatchToProps = dispatch => ({

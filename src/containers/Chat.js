@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 
 import { ChatManager, TokenProvider } from '@pusher/chatkit-client';
 import { tokenUrl, instanceLocator } from '../constants/ChatKitConfig';
-import { updateCurrentUser, fetchRoomList, userLogout } from '../actions';
+import { updateCurrentUser, fetchRoomList, userLogout, enterToRoom } from '../actions';
 
 import RoomList from "../containers/RoomList";
 import MessageList from "../containers/MessageList";
@@ -28,7 +28,11 @@ class Chat extends Component {
       chatManager.connect()
       .then(currentUser => {
         this.props.updateCurrentUser(currentUser);
-        this.props.getRoomList();
+        if(!this.props.currentRoomId){
+          this.props.getRoomList();
+        }else{
+          this.props.enterToRoom(this.props.currentRoomId);
+        }
       })
       .catch(err => console.log('error on connecting: ', err));
     }
@@ -36,7 +40,6 @@ class Chat extends Component {
 
   componentWillUnmount() {
     let currentUser = this.props.currentUser;
-
     if (currentUser.id){
       currentUser.disconnect();
     }
@@ -47,11 +50,11 @@ class Chat extends Component {
 
   render() {
 
-    const active = this.props.currentRoomId !== undefined ? "active" : "";
     if (!this.props.loginUserName){
       return <Redirect to={"/"} />
     }
-    
+
+    const active = this.props.currentRoomId !== undefined ? "active" : "";
     return (
       <div className={"app " + active}>
         <RoomList />
@@ -80,6 +83,9 @@ const mapDispatchToProps = dispatch => ({
   },
   clearState: () => {
     dispatch(userLogout())
+  },
+  enterToRoom: roomId => {
+    dispatch(enterToRoom(roomId))
   }
 });
 
