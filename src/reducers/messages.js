@@ -11,6 +11,8 @@ const messagesReducer = (state = [], action) => {
                     text: action.text
                 }
             ]);
+        case types.USER_LOGOUT:
+            return state = [];
         default:
             return state;
     }

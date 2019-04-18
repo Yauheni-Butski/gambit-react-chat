@@ -4,13 +4,14 @@ import { Redirect } from "react-router-dom";
 
 import { ChatManager, TokenProvider } from '@pusher/chatkit-client';
 import { tokenUrl, instanceLocator } from '../constants/ChatKitConfig';
-import { updateCurrentUser, fetchRoomList } from '../actions';
+import { updateCurrentUser, fetchRoomList, userLogout } from '../actions';
 
 import RoomList from "../containers/RoomList";
 import MessageList from "../containers/MessageList";
 import SendMessageForm from "../containers/SendMessageForm";
 import NewRoomForm from "../containers/NewRoomForm";
-import UserList from '../containers/UserList';
+import UserList from "../containers/UserList";
+import Logout from "../containers/Logout";
 
 class Chat extends Component {
 
@@ -35,9 +36,13 @@ class Chat extends Component {
 
   componentWillUnmount() {
     let currentUser = this.props.currentUser;
+
     if (currentUser.id){
       currentUser.disconnect();
     }
+
+    //send one actions for all reducers for clearing own state
+    this.props.clearState();
   }
 
   render() {
@@ -54,6 +59,7 @@ class Chat extends Component {
         <SendMessageForm />
         <NewRoomForm />
         <UserList />
+        <Logout />
       </div>
     );
   }
@@ -71,6 +77,9 @@ const mapDispatchToProps = dispatch => ({
   },
   getRoomList: () => {
     dispatch(fetchRoomList());
+  },
+  clearState: () => {
+    dispatch(userLogout())
   }
 });
 

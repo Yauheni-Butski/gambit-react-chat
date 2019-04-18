@@ -12,6 +12,8 @@ const roomsReducers = (state = INIT_DATA, action) => {
                 joinableRooms: action.joinableRooms,
                 joinedRooms: action.joinedRooms
             })
+        case types.USER_LOGOUT:
+            return state = INIT_DATA;
         default:
             return state;
     }

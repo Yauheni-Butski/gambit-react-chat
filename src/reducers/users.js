@@ -19,6 +19,8 @@ const usersReducers = (state = [], action) => {
         case types.UPD_ROOM_ONL_USERS:
             //we set the full list of users when enter to new room, so I can set new array directly
             return state = action.roomOnlineUsers;
+        case types.USER_LOGOUT:
+            return state = [];
         default:
             return state;
     }

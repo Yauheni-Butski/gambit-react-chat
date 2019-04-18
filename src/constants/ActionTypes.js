@@ -11,3 +11,4 @@ export const FETCH_ROOM_LIST = "FETCH_ROOM_LIST"; //saga
 export const UPD_CURR_ROOM_ID = "UPD_CURR_ROOM_ID";
 export const UPD_CURR_USER = "UPD_CURR_USER";
 export const UPD_ROOM_LIST = "UPD_ROOM_LIST";
+export const USER_LOGOUT = "USER_LOGOUT";

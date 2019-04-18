@@ -70,6 +70,10 @@
     cursor: pointer;
 }
 
+.login-form-wrapper .login-form button:active{
+    box-shadow: 0 0 10px var(--main-color);
+}
+
 
 .login-form-wrapper .login-form input{
     min-height: 35px;
