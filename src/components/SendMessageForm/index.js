@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import './SendMessageForm.css';
 
 class SendMessageForm extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             newMessageText: ''
-        }
+        };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);

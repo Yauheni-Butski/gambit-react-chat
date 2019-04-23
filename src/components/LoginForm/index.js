@@ -5,11 +5,11 @@ import './LoginForm.css';
 
 class LoginForm extends Component {
 
-    constructor(){
-        super()
+    constructor(props){
+        super(props);
         this.state = {
             username: ""
-        }
+        };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);

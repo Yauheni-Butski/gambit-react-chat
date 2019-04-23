@@ -5,8 +5,8 @@ import RoomListComponent from '../components/RoomList'
 
 class RoomList extends Component{
 
-    constructor(){
-        super()
+    constructor(props){
+        super(props);
         this.enterToRoom = this.enterToRoom.bind(this);
     }
 

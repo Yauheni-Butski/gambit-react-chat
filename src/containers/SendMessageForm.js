@@ -5,8 +5,8 @@ import SendMessageFormComponent from '../components/SendMessageForm'
 
 class SendMessageForm extends Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.sendMessageToServer = this.sendMessageToServer.bind(this);
     }
 
