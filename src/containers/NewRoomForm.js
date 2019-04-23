@@ -5,8 +5,8 @@ import NewRoomFormComponent from '../components/NewRoomForm';
 
 class NewRoomForm extends Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.sendNewRoomToServer = this.sendNewRoomToServer.bind(this);
     }
 

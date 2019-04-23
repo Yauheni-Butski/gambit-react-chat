@@ -5,8 +5,8 @@ import MessageListComponent from '../components/MessageList'
 
 class MessageList extends Component{
 
-    constructor(){
-        super()
+    constructor(props){
+        super(props);
         this.getMessageListRef = this.getMessageListRef.bind(this);
     }
     

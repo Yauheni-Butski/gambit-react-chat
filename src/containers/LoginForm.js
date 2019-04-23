@@ -8,12 +8,12 @@ import LoginFormComponent from '../components/LoginForm';
 
 class LoginForm extends Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             redirectToChat: false,
             message: ''
-        }
+        };
         this.loginToChat = this.loginToChat.bind(this);
     }
 

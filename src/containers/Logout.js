@@ -6,11 +6,11 @@ import LogoutComponent from '../components/Logout';
 
 class Logout extends Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             redirectToLogin: false
-        }
+        };
         this.logout = this.logout.bind(this);
     }
 
