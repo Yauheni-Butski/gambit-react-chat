@@ -1,7 +1,9 @@
 import { takeEvery, select, put, call } from 'redux-saga/effects';
 import { eventChannel, END } from 'redux-saga';
+
 import * as types from '../constants/ActionTypes';
-import { clearMessages, updateRoomList, fetchRoomList, newMessage, fetchUserList, userOnlineStateChanged, updateCurrentRoomId} from '../actions';
+import actions from '../actions';
+
 
 function enterToRoomChannel(currentUser, action){
   return eventChannel(emit => {
@@ -12,16 +14,16 @@ function enterToRoomChannel(currentUser, action){
       messageLimit: 20,
       hooks: {
         onMessage: (message) => {
-            emit(newMessage(message));
+            emit(actions.messages.newMessage(message));
         },
         onPresenceChanged: (state, user) => {
-            emit(userOnlineStateChanged(state, user, action.roomId));
+            emit(actions.users.userOnlineStateChanged(state, user, action.roomId));
         }
       }
     })
     .then(room => {
-      emit(fetchRoomList());
-      emit(fetchUserList(room.users));
+      emit(actions.rooms.fetchRoomList());
+      emit(actions.users.fetchUserList(room.users));
     });
 
     const unsubscribe = () => {
@@ -38,7 +40,7 @@ function fetchRoomListChannel(currentUser){
     .then(joinableRooms => {
       let joinedRooms = currentUser.rooms;
 
-      emit(updateRoomList(joinableRooms, joinedRooms))
+      emit(actions.rooms.updateRoomList(joinableRooms, joinedRooms))
       emit(END);
     })
     .catch(err => console.log('error on joinableRooms: ', err));
@@ -54,8 +56,8 @@ function* onChannelEmit(action){
 
 function* enterToRoom(action){
   const currentUser = yield select(state => state.currentUserState);
-  yield put(clearMessages());
-  yield put(updateCurrentRoomId(action.roomId));
+  yield put(actions.messages.clearMessages());
+  yield put(actions.rooms.updateCurrentRoomId(action.roomId));
 
   const chan = yield call(enterToRoomChannel, currentUser, action);
   yield takeEvery(chan, onChannelEmit);

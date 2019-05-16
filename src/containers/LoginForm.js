@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import { connect } from 'react-redux';
 
 import { authorizeUser } from '../services/login';
-import { loginUserName } from '../actions';
+import actions from '../actions';
 import LoginFormComponent from '../components/LoginForm';
 
 class LoginForm extends Component {
@@ -61,7 +61,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     saveUserName: userName => {
-      dispatch(loginUserName(userName))
+      dispatch(actions.login.loginUserName(userName))
     }
 });
 

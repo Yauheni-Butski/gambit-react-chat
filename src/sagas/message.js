@@ -1,6 +1,6 @@
 import { takeEvery, select, put } from 'redux-saga/effects';
 import * as types from '../constants/ActionTypes';
-import { messageReceived } from '../actions';
+import actions from '../actions';
 
 function* onNewMessageReceived(action){
     var message = action.message;
@@ -25,7 +25,7 @@ function* onNewMessageReceived(action){
             break;
         }
         
-        yield put(messageReceived(message.senderId, text));
+        yield put(actions.messages.messageReceived(message.senderId, text));
       }
     }
 }

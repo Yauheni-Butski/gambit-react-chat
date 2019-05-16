@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 
 import { ChatManager, TokenProvider } from '@pusher/chatkit-client';
 import { tokenUrl, instanceLocator } from '../constants/ChatKitConfig';
-import { updateCurrentUser, fetchRoomList, userLogout, enterToRoom } from '../actions';
+import actions from '../actions';
 
 import RoomList from "../containers/RoomList";
 import MessageList from "../containers/MessageList";
@@ -76,16 +76,16 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   updateCurrentUser: user => {
-    dispatch(updateCurrentUser(user))
+    dispatch(actions.users.updateCurrentUser(user))
   },
   getRoomList: () => {
-    dispatch(fetchRoomList());
+    dispatch(actions.rooms.fetchRoomList());
   },
   clearState: () => {
-    dispatch(userLogout())
+    dispatch(actions.login.userLogout())
   },
   enterToRoom: roomId => {
-    dispatch(enterToRoom(roomId))
+    dispatch(actions.rooms.enterToRoom(roomId))
   }
 });
 

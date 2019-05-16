@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { enterToRoom } from '../actions';
+import actions from '../actions';
 import NewRoomFormComponent from '../components/NewRoomForm';
 
 class NewRoomForm extends Component{
@@ -36,7 +36,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     enterToRoom: roomId => {
-        dispatch(enterToRoom(roomId))
+        dispatch(actions.rooms.enterToRoom(roomId))
       }
 });
 
