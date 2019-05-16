@@ -9,8 +9,8 @@ const roomsReducers = (state = INIT_DATA, action) => {
     switch (action.type) {
         case types.UPD_ROOM_LIST:
             return Object.assign({}, state, {
-                joinableRooms: action.joinableRooms,
-                joinedRooms: action.joinedRooms
+                joinableRooms: action.payload.joinableRooms,
+                joinedRooms: action.payload.joinedRooms
             })
         case types.USER_LOGOUT:
             return state = INIT_DATA;

@@ -2,7 +2,9 @@ import * as types from '../constants/ActionTypes';
 
 const loginUserName = (userName) => ({
     type: types.LOGIN_USER_NAME,
-    userName
+    payload: {
+        userName
+    }
 });
 const userLogout = () => ({
     type: types.USER_LOGOUT

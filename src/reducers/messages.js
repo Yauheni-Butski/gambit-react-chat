@@ -7,8 +7,8 @@ const messagesReducer = (state = [], action) => {
         case types.MESSAGE_RECEIVED:
             return state.concat([
                 {
-                    senderId: action.senderId,
-                    text: action.text
+                    senderId: action.payload.senderId,
+                    text: action.payload.text
                 }
             ]);
         case types.USER_LOGOUT:

@@ -3,18 +3,24 @@ import * as types from '../constants/ActionTypes';
 //saga
 const fetchUserList = (roomUsers) => ({
     type: types.FETCH_USER_LIST,
-    roomUsers
+    payload: {
+        roomUsers
+    }
 });
 //saga
 const userOnlineStateChanged = (state, user, roomId) => ({
     type: types.USER_ONL_ST_CHANGED,
-    state,
-    user,
-    roomId
+    payload: {
+        state,
+        user,
+        roomId
+    }
 });
 const updateCurrentUser = currentUser => ({
     type: types.UPD_CURR_USER,
-    currentUser
+    payload: {
+        currentUser
+    }
 });
 
 const userActions = {

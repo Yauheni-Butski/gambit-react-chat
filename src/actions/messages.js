@@ -6,13 +6,17 @@ const clearMessages = () => ({
 
 const messageReceived = (senderId, text) => ({
     type: types.MESSAGE_RECEIVED,
-    senderId,
-    text
+    payload: {
+        senderId,
+        text
+    }
 });
 //saga
 const newMessage = (message) => ({
     type: types.NEW_MESSAGE,
-    message
+    payload: {
+        message
+    }
 });
 
 const messageActions = {

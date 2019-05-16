@@ -2,22 +2,30 @@ import * as types from '../constants/ActionTypes';
 
 const updateRoomOnlineUsers = (roomOnlineUsers) => ({
     type: types.UPD_ROOM_ONL_USERS,
-    roomOnlineUsers
+    payload: {
+        roomOnlineUsers
+    }
 });
 const updateRoomUserStatus = (user, onlineStatus ) => ({
     type: types.UPD_ROOM_USER_STATUS,
-    user,
-    onlineStatus
+    payload: {
+        user,
+        onlineStatus
+    }
 });
 //saga
 const enterToRoom = roomId => ({
     type: types.ENTER_TO_ROOM,
-    roomId
+    payload: {
+        roomId
+    }
 });
 
 const updateCurrentRoomId = roomId => ({
     type: types.UPD_CURR_ROOM_ID,
-    roomId
+    payload: {
+        roomId
+    }
 });
 //saga
 const fetchRoomList = () => ({
@@ -26,8 +34,10 @@ const fetchRoomList = () => ({
 
 const updateRoomList = (joinableRooms, joinedRooms) => ({
     type: types.UPD_ROOM_LIST,
-    joinableRooms,
-    joinedRooms
+    payload: {
+        joinableRooms,
+        joinedRooms
+    }
 });
 
 const roomActions = {

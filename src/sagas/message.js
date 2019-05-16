@@ -3,7 +3,7 @@ import * as types from '../constants/ActionTypes';
 import actions from '../actions';
 
 function* onNewMessageReceived(action){
-    var message = action.message;
+    var message = action.payload.message;
     const currentRoomId = yield select(state => state.currentRoomState.roomId);
 
     if(currentRoomId === undefined || message.roomId === currentRoomId){

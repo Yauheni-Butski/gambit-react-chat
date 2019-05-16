@@ -10,14 +10,14 @@ function enterToRoomChannel(currentUser, action){
     //unsubscribe from prev room doesn't work...so I will filter incoming events by active roomId
     //if exist curr. room ... currentUser.roomSubscriptions[currentRoom.id].cancel()
     currentUser.subscribeToRoomMultipart({
-      roomId: action.roomId,
+      roomId: action.payload.roomId,
       messageLimit: 20,
       hooks: {
         onMessage: (message) => {
             emit(actions.messages.newMessage(message));
         },
         onPresenceChanged: (state, user) => {
-            emit(actions.users.userOnlineStateChanged(state, user, action.roomId));
+            emit(actions.users.userOnlineStateChanged(state, user, action.payload.roomId));
         }
       }
     })
@@ -27,7 +27,7 @@ function enterToRoomChannel(currentUser, action){
     });
 
     const unsubscribe = () => {
-      currentUser.roomSubscriptions[action.roomId].cancel();
+      currentUser.roomSubscriptions[action.payload.roomId].cancel();
     }
 
     return unsubscribe;
@@ -57,7 +57,7 @@ function* onChannelEmit(action){
 function* enterToRoom(action){
   const currentUser = yield select(state => state.currentUserState);
   yield put(actions.messages.clearMessages());
-  yield put(actions.rooms.updateCurrentRoomId(action.roomId));
+  yield put(actions.rooms.updateCurrentRoomId(action.payload.roomId));
 
   const chan = yield call(enterToRoomChannel, currentUser, action);
   yield takeEvery(chan, onChannelEmit);
