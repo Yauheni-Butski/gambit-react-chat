@@ -1,6 +1,18 @@
-import * as types from '../constants/ActionTypes';
+/* import * as types from '../constants/ActionTypes'; */
+import { createActions } from 'redux-actions';
 
-const clearMessages = () => ({
+const { messageReceived, newMessage, clearMessages } = createActions(
+    {
+        MESSAGE_RECEIVED: (senderId, text) => ({
+            senderId,
+            text
+        }),
+        NEW_MESSAGE: message => ({ message }),
+        CLEAR_MESSAGES: undefined, //payload creator is the identity. (I think this style is better then passing 'USER_LOGOUT' as the second parameter in 'createActions')
+    }
+);
+
+/* const clearMessages = () => ({
     type: types.CLEAR_MESSAGES
 });
 
@@ -17,12 +29,12 @@ const newMessage = (message) => ({
     payload: {
         message
     }
-});
+}); */
 
 const messageActions = {
-    clearMessages,
     messageReceived,
-    newMessage
+    newMessage,
+    clearMessages
 };
 
 export default messageActions;

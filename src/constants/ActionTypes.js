@@ -1,6 +1,6 @@
-export const MESSAGE_RECEIVED = "MESSAGE_RECEIVED";
+/* export const MESSAGE_RECEIVED = "MESSAGE_RECEIVED"; */
 export const NEW_MESSAGE = "NEW_MESSAGE"; //saga
-export const CLEAR_MESSAGES = "CLEAR_MESSAGES";
+/* export const CLEAR_MESSAGES = "CLEAR_MESSAGES"; */
 export const FETCH_USER_LIST = "FETCH_USER_LIST";//saga
 export const UPD_ROOM_ONL_USERS = "UPD_ROOM_ONL_USERS";
 export const USER_ONL_ST_CHANGED = "USER_ONL_ST_CHANGED";//sage
@@ -11,4 +11,4 @@ export const FETCH_ROOM_LIST = "FETCH_ROOM_LIST"; //saga
 export const UPD_CURR_ROOM_ID = "UPD_CURR_ROOM_ID";
 export const UPD_CURR_USER = "UPD_CURR_USER";
 export const UPD_ROOM_LIST = "UPD_ROOM_LIST";
-export const USER_LOGOUT = "USER_LOGOUT"; //TODO. Удаляем. Оставил на время, пока все редьюсеры не уберу
+/* export const USER_LOGOUT = "USER_LOGOUT"; */
