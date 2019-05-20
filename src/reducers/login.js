@@ -1,23 +1,26 @@
-import * as types from '../constants/ActionTypes';
+import { handleActions } from 'redux-actions';
+import actions from '../actions';
 
 function getPersistState(){
     var userName = JSON.parse(localStorage.getItem("userName")) || '';
     return {
-        userName: userName
+        userName
     };
 }
 
-const loginReducer = (state = getPersistState(), action) => {
-    switch (action.type) {
-        case types.LOGIN_USER_NAME:
+const loginReducer = handleActions(
+    {
+        [actions.login.loginUserName]: (state, action) => {
             localStorage.setItem("userName", JSON.stringify(action.payload.userName));
             return Object.assign({}, state, { userName: action.payload.userName });
-        case types.USER_LOGOUT:
+        },
+
+        [actions.login.userLogout]: state => {
             localStorage.setItem("userName", JSON.stringify(''));
-            return state = Object.assign({}, state, { userName: '' });;
-        default:
-            return state;
-    }
-};
+            return Object.assign({}, state, { userName: '' });
+        }
+    },
+    getPersistState()
+);
 
 export default loginReducer;

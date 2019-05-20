@@ -1,14 +1,11 @@
-import * as types from '../constants/ActionTypes';
+import { createActions } from 'redux-actions';
 
-const loginUserName = (userName) => ({
-    type: types.LOGIN_USER_NAME,
-    payload: {
-        userName
+const { loginUserName, userLogout } = createActions(
+    {
+        LOGIN_USER_NAME: (userName) => ({ userName }),
+        USER_LOGOUT: undefined //payload creator is the identity. (I think this style is better then passing 'USER_LOGOUT' as the second parameter in 'createActions')
     }
-});
-const userLogout = () => ({
-    type: types.USER_LOGOUT
-});
+);
 
 const loginActions = {
     loginUserName,
