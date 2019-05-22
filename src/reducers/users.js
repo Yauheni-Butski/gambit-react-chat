@@ -20,7 +20,9 @@ const usersReducers = handleActions(
             return state;
         },
 
-        [actions.rooms.updateRoomOnlineUsers]: (action) => (action.payload.roomOnlineUsers),//we set the full list of users when enter to new room, so I can set new array directly
+        [actions.rooms.updateRoomOnlineUsers]: (state, action) => {
+            return state = action.payload.roomOnlineUsers;
+        },//we set the full list of users when enter to new room, so I can set new array directly
 
         [actions.login.userLogout]: () => []
     },

@@ -1,7 +1,7 @@
-import * as types from '../constants/ActionTypes';
-/* import { createActions } from 'redux-actions';
+/* import * as types from '../constants/ActionTypes'; */
+import { /* createActions,  */createAction } from 'redux-actions';
 
-const { fetchUserList, userOnlineStateChanged, updateCurrentUser } = createActions(
+/* const { fetchUserList, userOnlineStateChanged, updateCurrentUser } = createActions(
     {
         FETCH_USER_LIST: (roomUsers) => ({ roomUsers }),
         USER_ONL_ST_CHANGED: (state, user, roomId) => ({
@@ -9,11 +9,20 @@ const { fetchUserList, userOnlineStateChanged, updateCurrentUser } = createActio
             user,
             roomId
         }),
-        UPD_CURR_USER: (currentUser) => ({ currentUser: currentUser }) //TODO. ВРеменно
+        UPD_CURR_USER: (currentUser) => ({ currentUser })
     }
 ); */
 
-//saga
+//===============================================
+const fetchUserList = createAction('FETCH_USER_LIST', (roomUsers) => ({ roomUsers }));
+const userOnlineStateChanged = createAction('USER_ONL_ST_CHANGED', (state, user, roomId) => ({
+    state,
+    user,
+    roomId
+}))
+const updateCurrentUser = createAction('UPD_CURR_USER', (currentUser) => ({currentUser}));
+
+/* //saga
 const fetchUserList = (roomUsers) => ({
     type: types.FETCH_USER_LIST,
     payload: {
@@ -32,9 +41,9 @@ const userOnlineStateChanged = (state, user, roomId) => ({
 const updateCurrentUser = currentUser => ({
     type: types.UPD_CURR_USER,
     payload: {
-        currentUser
+        currentUser: currentUser
     }
-});
+}); */
 
 const userActions = {
     fetchUserList,

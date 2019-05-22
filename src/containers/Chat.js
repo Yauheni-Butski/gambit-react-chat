@@ -76,16 +76,16 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   updateCurrentUser: user => {
-    dispatch(actions.users.updateCurrentUser(user))
+    dispatch(actions.users.updateCurrentUser(user));
   },
   getRoomList: () => {
     dispatch(actions.rooms.fetchRoomList());
   },
   clearState: () => {
-    dispatch(actions.login.userLogout())
+    dispatch(actions.login.userLogout());
   },
   enterToRoom: roomId => {
-    dispatch(actions.rooms.enterToRoom(roomId))
+    dispatch(actions.rooms.enterToRoom(roomId));
   }
 });
 

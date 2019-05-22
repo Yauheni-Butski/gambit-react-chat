@@ -1,7 +1,7 @@
-import * as types from '../constants/ActionTypes';
-/* import { createActions } from 'redux-actions';
+/* import * as types from '../constants/ActionTypes'; */
+import { /* createActions, */ createAction } from 'redux-actions';
 
-const { updateRoomOnlineUsers, updateRoomUserStatus, enterToRoom, updateCurrentRoomId, updateRoomList ,fetchRoomList } = createActions(
+/* const { updateRoomOnlineUsers, updateRoomUserStatus, enterToRoom, updateCurrentRoomId, updateRoomList ,fetchRoomList } = createActions(
     {
         UPD_ROOM_ONL_USERS: (roomOnlineUsers) => ({ roomOnlineUsers }),
         UPD_ROOM_USER_STATUS: (user, onlineStatus ) => ({
@@ -15,7 +15,18 @@ const { updateRoomOnlineUsers, updateRoomUserStatus, enterToRoom, updateCurrentR
     }
 ); */
 
-const updateRoomOnlineUsers = (roomOnlineUsers) => ({
+//==========================================================
+const updateRoomOnlineUsers = createAction('UPD_ROOM_ONL_USERS', (roomOnlineUsers) => ({ roomOnlineUsers }));
+const updateRoomUserStatus = createAction('UPD_ROOM_USER_STATUS', (user, onlineStatus ) => ({
+    user,
+    onlineStatus
+}))
+const enterToRoom = createAction('ENTER_TO_ROOM', (roomId) => ({ roomId }));
+const updateCurrentRoomId = createAction('UPD_CURR_ROOM_ID', (roomId) => ({ roomId: roomId }));
+const updateRoomList = createAction('UPD_ROOM_LIST', (joinableRooms, joinedRooms) => ({ joinableRooms, joinedRooms }));
+const fetchRoomList = createAction('FETCH_ROOM_LIST');
+
+/* const updateRoomOnlineUsers = (roomOnlineUsers) => ({
     type: types.UPD_ROOM_ONL_USERS,
     payload: {
         roomOnlineUsers
@@ -53,7 +64,7 @@ const updateRoomList = (joinableRooms, joinedRooms) => ({
         joinableRooms,
         joinedRooms
     }
-});
+}); */
 
 const roomActions = {
     updateRoomOnlineUsers,

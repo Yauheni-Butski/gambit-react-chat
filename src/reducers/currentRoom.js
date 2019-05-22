@@ -12,10 +12,7 @@ function getPersistState(){
 const currentRoomReducer = handleActions(
     {
         [actions.rooms.updateCurrentRoomId]: (state, action) => {
-            return Object.assign({}, state, {
-                joinableRooms: action.payload.joinableRooms,
-                joinedRooms: action.payload.joinedRooms
-            })
+            return Object.assign({}, state, { roomId: action.payload.roomId });
         },
 
         [actions.login.userLogout]: (state) => {
