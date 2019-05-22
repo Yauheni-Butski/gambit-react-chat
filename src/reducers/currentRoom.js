@@ -1,4 +1,3 @@
-/* import * as types from '../constants/ActionTypes'; */
 import { handleActions } from 'redux-actions';
 import actions from '../actions';
 
@@ -22,18 +21,5 @@ const currentRoomReducer = handleActions(
     },
     getPersistState()
 );
-
-/* const currentRoomReducer = (state = getPersistState(), action) => {
-    switch (action.type) {
-        case types.UPD_CURR_ROOM_ID:
-            localStorage.setItem("roomId", JSON.stringify(action.payload.roomId));
-            return state = Object.assign({}, state, { roomId: action.payload.roomId });
-        case types.USER_LOGOUT:
-            localStorage.setItem("userName", null);
-            return state = Object.assign({}, state, { roomId: undefined });
-        default:
-            return state;
-    }
-}; */
 
 export default currentRoomReducer;

@@ -1,5 +1,4 @@
 import { takeEvery, put, select } from 'redux-saga/effects';
-import * as types from '../constants/ActionTypes';
 import actions from '../actions';
 
 function* fetchRoomUserList(action){
@@ -15,8 +14,8 @@ function* handleUserOnlineStatus(action){
 }
 
 const userSaga = function* () {
-    yield takeEvery(types.FETCH_USER_LIST, fetchRoomUserList);
-    yield takeEvery(types.USER_ONL_ST_CHANGED, handleUserOnlineStatus)
+    yield takeEvery(actions.users.fetchUserList, fetchRoomUserList);
+    yield takeEvery(actions.users.userOnlineStateChanged, handleUserOnlineStatus);
 }
 
 export default userSaga;

@@ -1,5 +1,4 @@
 import { takeEvery, select, put } from 'redux-saga/effects';
-import * as types from '../constants/ActionTypes';
 import actions from '../actions';
 
 function* onNewMessageReceived(action){
@@ -31,7 +30,7 @@ function* onNewMessageReceived(action){
 }
 
 const messageSaga = function* () {
-    yield takeEvery(types.NEW_MESSAGE, onNewMessageReceived);
+    yield takeEvery(actions.messages.newMessage, onNewMessageReceived);
 }
 
 export default messageSaga;

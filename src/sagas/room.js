@@ -1,7 +1,6 @@
 import { takeEvery, select, put, call } from 'redux-saga/effects';
 import { eventChannel, END } from 'redux-saga';
 
-import * as types from '../constants/ActionTypes';
 import actions from '../actions';
 
 
@@ -71,8 +70,8 @@ function* refreshRoomList(){
 }
 
 const roomSaga = function* () {
-    yield takeEvery(types.ENTER_TO_ROOM, enterToRoom);
-    yield takeEvery(types.FETCH_ROOM_LIST, refreshRoomList);
+    yield takeEvery(actions.rooms.enterToRoom, enterToRoom);
+    yield takeEvery(actions.rooms.fetchRoomList, refreshRoomList);
 }
 
 export default roomSaga;

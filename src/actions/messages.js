@@ -1,4 +1,3 @@
-/* import * as types from '../constants/ActionTypes'; */
 import { /* createActions, */ createAction } from 'redux-actions';
 
 /* const { messageReceived, newMessage, clearMessages } = createActions(
@@ -20,25 +19,6 @@ const messageReceived = createAction('MESSAGE_RECEIVED', (senderId, text) => ({
 }));
 const newMessage = createAction('NEW_MESSAGE', message => ({ message }))
 const clearMessages = createAction('CLEAR_MESSAGES');
-
-/* const clearMessages = () => ({
-    type: types.CLEAR_MESSAGES
-});
-
-const messageReceived = (senderId, text) => ({
-    type: types.MESSAGE_RECEIVED,
-    payload: {
-        senderId,
-        text
-    }
-});
-//saga
-const newMessage = (message) => ({
-    type: types.NEW_MESSAGE,
-    payload: {
-        message
-    }
-}); */
 
 const messageActions = {
     messageReceived,
