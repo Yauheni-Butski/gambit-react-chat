@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router'
 
 import { Provider } from 'react-redux';
-import store from './store/store';
+import configureStore, {history} from './store/store';
 import Chat from './containers/Chat';
 import LoginForm from './containers/LoginForm';
+
+const store = configureStore();
 
 class App extends Component {
 
   render() {
     return (
       <Provider store={store}>
-        <Router>
+       <ConnectedRouter history={history}>
           <Switch>
-            <Route path="/" exact component={LoginForm}/>
+            <Route exact path="/" component={LoginForm}/>
             <Route path="/chat" component={Chat}/>
           </Switch>
-        </Router>
+        </ConnectedRouter>
       </Provider>
     );
   }

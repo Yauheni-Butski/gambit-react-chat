@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Redirect } from "react-router-dom";
 import { connect } from 'react-redux';
+import { push } from 'connected-react-router';
 
 import { authorizeUser } from '../services/login';
 import actions from '../actions';
@@ -11,7 +11,6 @@ class LoginForm extends Component {
     constructor(props){
         super(props);
         this.state = {
-            redirectToChat: false,
             message: ''
         };
         this.loginToChat = this.loginToChat.bind(this);
@@ -19,9 +18,7 @@ class LoginForm extends Component {
 
     componentDidMount() {
         if (this.props.loginUserName){
-            this.setState({
-                redirectToChat: true
-            });
+            this.props.goToRoute('/chat');
         }
     }
 
@@ -35,18 +32,13 @@ class LoginForm extends Component {
             }
             else{
                 this.props.saveUserName(user.id);
-                    this.setState({
-                        redirectToChat: true
-                    });
+                this.props.goToRoute('/chat');
             }
         })
         .catch(error => { console.log(error); })
     }
 
     render(){
-        if (this.state.redirectToChat === true){
-            return <Redirect to='/chat' />
-        }
         return(
             <LoginFormComponent
                 login={this.loginToChat}
@@ -61,7 +53,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     saveUserName: userName => {
-      dispatch(actions.login.loginUserName(userName))
+        dispatch(actions.login.loginUserName(userName));
+    },
+    goToRoute: url => {
+        dispatch(push(url));
     }
 });
 

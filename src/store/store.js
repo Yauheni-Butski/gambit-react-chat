@@ -1,14 +1,27 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createBrowserHistory } from 'history'
+import { routerMiddleware } from 'connected-react-router'
+import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
-import chatReducers from '../reducers';
+import createRootReducer from '../reducers';
 import chatSaga from '../sagas';
 
+export const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
-const store = createStore(
-    chatReducers,
-    applyMiddleware(sagaMiddleware)
-);
-sagaMiddleware.run(chatSaga);
 
-export default store;
+export default function configureStore(preloadedState) {
+    const store = createStore(
+        createRootReducer(history),
+        preloadedState,
+        compose(
+            applyMiddleware(
+                routerMiddleware(history),
+                sagaMiddleware
+            )
+        )
+    );
+
+    sagaMiddleware.run(chatSaga);
+
+    return store;
+};
