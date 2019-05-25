@@ -7,7 +7,7 @@ function RoomList({rooms, subscribeToRoom, currentRoomId}) {
     let allRooms = [...rooms.joinableRooms, ...rooms.joinedRooms].sort((a, b) => a.id - b.id);
 
     return(
-        <div className={styles.roomsList + " rooms-list-grid-area"}>
+        <div className={styles.roomsList}>
             <ul>
                 <h3>Your rooms:</h3>
                 {allRooms.map(room => {

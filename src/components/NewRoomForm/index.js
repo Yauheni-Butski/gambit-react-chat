@@ -33,7 +33,7 @@ class NewRoomForm extends Component {
 
     render () {
         return (
-            <div className={styles.newRoomForm+" new-room-form-grid-area"}>
+            <div className={styles.newRoomForm}>
                 <form
                     onSubmit={this.handleSubmit}>
                     <input

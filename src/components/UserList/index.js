@@ -6,12 +6,12 @@ import styles from './UserList.module.css';
 function UserList({currentRoomId, onlineUsers}) {
     if(currentRoomId === undefined){
         return (
-            <div className={styles.userList + " " + styles.closed + " user-list-grid-area"}></div>
+            <div className={styles.userList + " " + styles.closed}></div>
         )
     }
 
     return (
-        <div className={styles.userList + " user-list-grid-area"}>
+        <div className={styles.userList}>
             <ul>
                 <h3>Users online:</h3>
                 {onlineUsers.map(user => {

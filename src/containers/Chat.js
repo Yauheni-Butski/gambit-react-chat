@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Redirect } from "react-router-dom";
+import { push } from 'connected-react-router';
 
 import { ChatManager, TokenProvider } from '@pusher/chatkit-client';
 import { tokenUrl, instanceLocator } from '../constants/ChatKitConfig';
 import actions from '../actions';
 
-import RoomList from "../containers/RoomList";
-import MessageList from "../containers/MessageList";
-import SendMessageForm from "../containers/SendMessageForm";
-import NewRoomForm from "../containers/NewRoomForm";
-import UserList from "../containers/UserList";
-import Logout from "../containers/Logout";
+import ChatComponent from "../components/Chat";
 
 class Chat extends Component {
 
@@ -36,6 +31,9 @@ class Chat extends Component {
       })
       .catch(err => console.log('error on connecting: ', err));
     }
+    else{
+      this.props.goToRoute('/');
+    }
   }
 
   componentWillUnmount() {
@@ -49,22 +47,11 @@ class Chat extends Component {
   }
 
   render() {
-
-    if (!this.props.loginUserName){
-      return <Redirect to={"/"} />
-    }
-
-    const active = this.props.currentRoomId !== undefined ? "active" : "";
+    const active = this.props.currentRoomId !== undefined;
     return (
-      <div className={"app " + active}>
-        <RoomList />
-        <MessageList />
-        <SendMessageForm />
-        <NewRoomForm />
-        <UserList />
-        <Logout />
-      </div>
-    );
+      <ChatComponent 
+          isActive={active}/>
+    )
   }
 }
 
@@ -86,6 +73,9 @@ const mapDispatchToProps = dispatch => ({
   },
   enterToRoom: roomId => {
     dispatch(actions.rooms.enterToRoom(roomId));
+  },
+  goToRoute: url => {
+    dispatch(push(url));
   }
 });
 

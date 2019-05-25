@@ -1,6 +1,7 @@
   .newRoomForm {
     overflow: hidden;
     padding: 0 5px;
+    height: 100%;
     background: var(--secondary-color);
     color: var(--main-text-color);
   }

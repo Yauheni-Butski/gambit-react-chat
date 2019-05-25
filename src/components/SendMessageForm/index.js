@@ -32,7 +32,7 @@ class SendMessageForm extends Component {
         return (
             <form
                 onSubmit={this.handleSubmit} 
-                className={styles.sendMessageForm + " send-message-form-grid-area"}>
+                className={styles.sendMessageForm}>
                 <input
                     disabled={this.props.disabled}
                     onChange={this.handleChange}

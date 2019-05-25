@@ -8,7 +8,7 @@ function Logout({logout}) {
     return (
         <button 
             onClick={logout}
-            className={styles.logOutBtn + " log-out-grid-area"}>
+            className={styles.logOutBtn}>
                 Logout
                 <img 
                     alt=""

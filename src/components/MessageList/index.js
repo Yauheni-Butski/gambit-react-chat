@@ -10,7 +10,7 @@ class MessageList extends Component {
     render(){
         if (!this.props.currentRoomId){
             return (
-                <div className={styles.messageList+" message-list-grid-area"}>
+                <div className={styles.messageList}>
                     <div className={styles.joinRoom}>
                         &larr; Join a room!
                     </div>
@@ -18,7 +18,7 @@ class MessageList extends Component {
             )
         }
         return (
-            <div className={styles.messageList+" message-list-grid-area"}>
+            <div className={styles.messageList}>
                 {this.props.messages.map((message, index) => {
                     var isOwnMessage = message.senderId === this.props.currentUserId;
                     return (
