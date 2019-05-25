@@ -45,26 +45,26 @@ html, body {
   "n f f f f l";
 }
 
-.new-room-form {
+.new-room-form-grid-area {
   grid-area: n;
 }
 
-.rooms-list {
+.rooms-list-grid-area {
   grid-area: r;
 }
 
-.message-list {
+.message-list-grid-area {
   grid-area: m;
 }
 
-.send-message-form {
+.send-message-form-grid-area {
   grid-area: f;
 }
 
-.user-list{
+.user-list-grid-area{
   grid-area: u;
 }
 
-.log-out{
+.log-out-grid-area{
   grid-area: l;
 }

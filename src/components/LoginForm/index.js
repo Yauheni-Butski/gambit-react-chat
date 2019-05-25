@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import './LoginForm.css';
+import styles from './LoginForm.module.css';
 
 class LoginForm extends Component {
 
@@ -41,12 +41,12 @@ class LoginForm extends Component {
 
     render(){
         return (
-            <div className="login-form-wrapper">
+            <div className={styles.loginFormWrapper}>
                 <form 
                     onSubmit={this.handleSubmit}
-                    className="login-form">
+                    className={styles.loginForm}>
                     <div 
-                        className="error-message"
+                        className={styles.errorMessage}
                         title={this.props.message}>
                     {this.props.message}
                     </div>
@@ -58,8 +58,8 @@ class LoginForm extends Component {
                         placeholder="Enter you username" />
                     <button type="submit">Login</button>
 
-                    <div className="test-tips">
-                        <span className="tip-text">For test purpose use one of these users (you can just click on userName):</span>
+                    <div className={styles.testTips}>
+                        <span className={styles.tipText}>For test purpose use one of these users (you can just click on userName):</span>
                         <ul>
                             <li onClick={this.handleUserNameClick}>gambit-admin</li>
                             <li onClick={this.handleUserNameClick}>test-user-1</li>

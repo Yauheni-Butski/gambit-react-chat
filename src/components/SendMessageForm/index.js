@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import './SendMessageForm.css';
+import styles from './SendMessageForm.module.css';
 
 class SendMessageForm extends Component {
     constructor(props) {
@@ -32,7 +32,7 @@ class SendMessageForm extends Component {
         return (
             <form
                 onSubmit={this.handleSubmit} 
-                className="send-message-form">
+                className={styles.sendMessageForm + " send-message-form-grid-area"}>
                 <input
                     disabled={this.props.disabled}
                     onChange={this.handleChange}

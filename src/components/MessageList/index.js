@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Message from '../Message';
 
-import './MessageList.css';
+import styles from './MessageList.module.css';
 
 /* Use ref to this component in container for auto scrolling, so can't make it functional component. */
 /* Don't want to use forwarding ref. */
@@ -10,23 +10,23 @@ class MessageList extends Component {
     render(){
         if (!this.props.currentRoomId){
             return (
-                <div className="message-list">
-                    <div className="join-room">
+                <div className={styles.messageList+" message-list-grid-area"}>
+                    <div className={styles.joinRoom}>
                         &larr; Join a room!
                     </div>
                 </div>
             )
         }
         return (
-            <div className="message-list">
+            <div className={styles.messageList+" message-list-grid-area"}>
                 {this.props.messages.map((message, index) => {
-                    var messageOfClass = message.senderId === this.props.currentUserId ? "own" : "";
+                    var isOwnMessage = message.senderId === this.props.currentUserId;
                     return (
                         <Message 
                             key={index}
                             username={message.senderId}
                             text={message.text}
-                            messageOfClass={messageOfClass}/>
+                            isOwnMessage={isOwnMessage}/>
                     )
                 })}
             </div>

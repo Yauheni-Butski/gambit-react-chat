@@ -1,19 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-import './RoomList.css';
+import styles from './RoomList.module.css';
 
 function RoomList({rooms, subscribeToRoom, currentRoomId}) {
     let allRooms = [...rooms.joinableRooms, ...rooms.joinedRooms].sort((a, b) => a.id - b.id);
 
     return(
-        <div className="rooms-list">
+        <div className={styles.roomsList + " rooms-list-grid-area"}>
             <ul>
                 <h3>Your rooms:</h3>
                 {allRooms.map(room => {
-                    const active = currentRoomId === room.id ? "active" : "";
+                    const isActive = currentRoomId === room.id;
                     return (
-                        <li key={room.id} className={"room " + active}>
+                        <li key={room.id} className={styles.room + (isActive ? " " + styles.active : "")}>
                             <button 
                                 onClick={() => { subscribeToRoom(room.id); }}>
                                 # {room.name}

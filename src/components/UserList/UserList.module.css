@@ -1,4 +1,4 @@
-.user-list {
+.userList {
     box-sizing: border-box;
     padding: 10px;
     background-color: var(--user-list-main-color);
@@ -6,26 +6,26 @@
     height: 100%;
 }
 
-.user-list.closed{
+.userList.closed{
     display: none;
 }
 
-.user-list > ul {
+.userList > ul {
     list-style-type: none;    
     padding: 0;
     overflow: scoll;
 }
   
-.user-list li {
+.userList li {
     margin: 10px 0;
 }
   
-.user-list > h3 {
+.userList > h3 {
     margin: 5px 0;
     color: var(--secondary-color);
 }
   
-.user-list .user {
+.userList .user {
     color: #daffda;
     font-weight: 600;
     text-decoration: none;

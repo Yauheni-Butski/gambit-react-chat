@@ -1,4 +1,4 @@
-.login-form-wrapper{
+ .loginFormWrapper{
     width: 300px;
     height: 390px;
     border: 5px solid var(--main-color);
@@ -12,7 +12,7 @@
     margin: auto auto;
 }
 
-.login-form-wrapper .login-form{
+.loginForm{
     padding: 0 20px;
     height: 100px;
     position: absolute;
@@ -23,7 +23,7 @@
     margin-top: 50px;
 }
 
-.login-form-wrapper .login-form .error-message{
+.errorMessage{
     color: red;
     margin-bottom: 10px;
     position: absolute;
@@ -34,22 +34,22 @@
     overflow: hidden;
 }
 
-.login-form-wrapper .login-form .test-tips{
+.testTips{
     margin-top: 20px;
 }
 
-.login-form-wrapper .login-form .test-tips .tip-text{
+.tipText{
     padding: 0 15px;
     width: 230px;
     display: inline-block;
 }
 
-.login-form-wrapper .login-form .test-tips ul li:hover{
+.testTips ul li:hover{
     font-weight: bold;
     cursor: pointer;
 }
 
-.login-form-wrapper .login-form button{
+.loginForm button{
     display: block;
     margin: 0 auto;
     margin-top: 23px;
@@ -70,12 +70,11 @@
     cursor: pointer;
 }
 
-.login-form-wrapper .login-form button:active{
+.loginForm button:active{
     box-shadow: 0 0 10px var(--main-color);
 }
 
-
-.login-form-wrapper .login-form input{
+.loginForm input{
     min-height: 35px;
     line-height: 27px;
     padding: 0 12px;
@@ -87,6 +86,7 @@
     width: 230px;
     outline: none;
 }
-.login-form-wrapper .login-form input:focus{
+
+.loginForm input:focus{
     border: 1px solid var(--main-color);
 }

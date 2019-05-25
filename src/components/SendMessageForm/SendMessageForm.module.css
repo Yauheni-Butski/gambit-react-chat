@@ -1,9 +1,9 @@
-.send-message-form {
+  .sendMessageForm {
     background: var(--send-message-form);
     display: flex;
   }
   
-  .send-message-form input {
+  .sendMessageForm input {
     width: 100%;
     padding: 15px 10px;
     margin: 0;
@@ -13,10 +13,10 @@
   
   }
   
-  .send-message-form input:focus {
+  .sendMessageForm input:focus {
     outline-width: 0;
   }
   
-  .send-message-form input::placeholder {
+  .sendMessageForm input::placeholder {
     color: var(--main-text-color);
   }

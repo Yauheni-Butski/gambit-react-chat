@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 
-import './NewRoomForm.css';
+import styles from './NewRoomForm.module.css';
 
 class NewRoomForm extends Component {
 
@@ -33,7 +33,7 @@ class NewRoomForm extends Component {
 
     render () {
         return (
-            <div className="new-room-form">
+            <div className={styles.newRoomForm+" new-room-form-grid-area"}>
                 <form
                     onSubmit={this.handleSubmit}>
                     <input

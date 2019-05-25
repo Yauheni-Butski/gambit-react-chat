@@ -1,36 +1,36 @@
-.new-room-form {
+  .newRoomForm {
     overflow: hidden;
     padding: 0 5px;
     background: var(--secondary-color);
     color: var(--main-text-color);
   }
   
-  .new-room-form form {
+  .newRoomForm form {
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
   
-  .new-room-form input {
+  .newRoomForm input {
     width: 100%;
     height: 100%;
     background: var(--secondary-color);
     border: 0;
   }
   
-  .new-room-form button {
+  .newRoomForm button {
     background: var(--secondary-color);
     color: var(--main-text-color);
     border: 0;
     cursor: pointer;
   } 
   
-  .new-room-form input::placeholder {
+  .newRoomForm input::placeholder {
     color: var(--main-text-color);
     font-weight: 200;
   }
   
-  .new-room-form input:focus {
+  .newRoomForm input:focus {
     outline-width: 0;
   }

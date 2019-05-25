@@ -1,4 +1,4 @@
-.rooms-list {
+  .roomsList {
     box-sizing: border-box;
     padding: 10px;
     background-color: var(--main-color);
@@ -6,22 +6,22 @@
     height: 100%;
   }
   
-  .rooms-list > ul {
+  .roomsList > ul {
     list-style-type: none;    
     padding: 0;
     overflow: scoll;
   }
   
-  .rooms-list li {
+  .roomsList li {
     margin: 10px 0;
   }
   
-  .rooms-list > h3 {
+  .roomsList > h3 {
     margin: 5px 0;
     color: var(--secondary-color);
   }
   
-  .rooms-list .room button {
+  .roomsList .room button {
     color: var(--secondary-text-color);
     font-weight: 600;
     text-decoration: none;
@@ -33,14 +33,13 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    width: 100%;
     text-align: left;
   }
   
-  .rooms-list .room button:hover{
+  .roomsList .room button:hover{
     cursor: pointer;
   }
   
-  .rooms-list .room.active button {
+  .roomsList .room.active button {
     color: var(--secondary-color);
   }

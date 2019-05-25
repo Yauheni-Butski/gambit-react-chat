@@ -1,4 +1,4 @@
-.message-list {
+  .messageList {
     box-sizing: border-box;
     padding-left: 6px;
     width: 100%;
@@ -8,7 +8,7 @@
     padding: 0 20px;
   }
   
-  .message-list .join-room {
+  .joinRoom {
     display: flex;
     justify-content: center;
     align-items: center;

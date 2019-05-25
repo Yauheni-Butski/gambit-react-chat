@@ -1,22 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './UserList.css';
+import styles from './UserList.module.css';
 
 function UserList({currentRoomId, onlineUsers}) {
     if(currentRoomId === undefined){
         return (
-            <div className="user-list closed"></div>
+            <div className={styles.userList + " " + styles.closed + " user-list-grid-area"}></div>
         )
     }
 
     return (
-        <div className="user-list">
+        <div className={styles.userList + " user-list-grid-area"}>
             <ul>
                 <h3>Users online:</h3>
                 {onlineUsers.map(user => {
                     return (
-                        <li key={user.id} className="user">
+                        <li key={user.id} className={styles.user}>
                             - {user.name}
                         </li>
                     )

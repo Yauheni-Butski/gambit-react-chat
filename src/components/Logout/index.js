@@ -1,22 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './Logout.css';
+import styles from './Logout.module.css';
 
 function Logout({logout}) {
 
     return (
-        <div className="log-out">
-            <button 
-                onClick={logout}
-                className="log-out-btn">
-                    Logout
-                    <img 
-                        alt=""
-                        className="log-out-icon"
-                        src="/logout.svg"/>
-                </button>
-        </div>
+        <button 
+            onClick={logout}
+            className={styles.logOutBtn + " log-out-grid-area"}>
+                Logout
+                <img 
+                    alt=""
+                    className={styles.logOutIcon}
+                    src="/logout.svg"/>
+            </button>
     )
 }
 
