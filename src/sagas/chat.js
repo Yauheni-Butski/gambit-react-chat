@@ -12,9 +12,10 @@ function connectToChatServerChannel(chatManager, roomId){
         .then(currentUser => {
             emit(actions.users.updateCurrentUser(currentUser));
 
-            if(!roomId){
+            if (!roomId){
                 emit(actions.rooms.fetchRoomList());
-            }else{
+            }
+            else {
                 emit(actions.rooms.enterToRoom(roomId));
             }
 
@@ -29,7 +30,7 @@ function connectToChatServerChannel(chatManager, roomId){
 
 function* onChannelEmit(action){
     yield put(action);
-  }
+}
 
 function* connectToChatServer(action){
 
