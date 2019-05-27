@@ -1,4 +1,4 @@
-import { createActions/* , createAction */ } from 'redux-actions';
+import { createActions } from 'redux-actions';
 
 const { loginUserName, userLogout } = createActions(
     {
