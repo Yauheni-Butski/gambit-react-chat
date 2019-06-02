@@ -14,7 +14,7 @@ function Logout({logout}) {
                     alt=""
                     className={styles.logOutIcon}
                     src="/logout.svg"/>
-            </button>
+        </button>
     )
 }
 

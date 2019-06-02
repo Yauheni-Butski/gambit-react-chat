@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import LoginForm from '../components/LoginForm';
-import styles from '../components/LoginForm/LoginForm.module.css'
+import styles from '../components/LoginForm/LoginForm.module.css';
 
 describe('Component: LoginForm', () => {
     let minProps;
@@ -14,10 +14,7 @@ describe('Component: LoginForm', () => {
     });
 
     it('renders without crashing', () => {
-        expect(
-        shallow(<LoginForm login={minProps.login}/>)
-        .length
-        ).toEqual(1);
+        expect(shallow(<LoginForm login={minProps.login}/>).length).toEqual(1);
     });
 
     it('dont call login function by submit if username field is empty', () => {
@@ -28,7 +25,7 @@ describe('Component: LoginForm', () => {
         expect(minProps.login).toHaveBeenCalledTimes(0);
     });
 
-    it('call login function by submit if username field exist', () => {
+    it('call login function by submit if username field is not empty', () => {
         const wrapper = mount(<LoginForm login={minProps.login}/>);
 
         wrapper.setState({username: "someTestWrongUsername"});

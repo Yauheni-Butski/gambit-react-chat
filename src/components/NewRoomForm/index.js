@@ -25,10 +25,12 @@ class NewRoomForm extends Component {
         let newRoomName = this.state.newRoomName;
         newRoomName.substring(0, Math.min(60, newRoomName.length));
         
-        this.props.addNewRoom(newRoomName);
-        this.setState({
-            newRoomName: ''
-        });
+        if (newRoomName !== ""){
+            this.props.addNewRoom(newRoomName);
+            this.setState({
+                newRoomName: ''
+            });
+        }
     }
 
     render () {
