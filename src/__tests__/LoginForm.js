@@ -1,13 +1,15 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import LoginForm from '../components/LoginForm';
+import styles from '../components/LoginForm/LoginForm.module.css'
 
 describe('Component: LoginForm', () => {
     let minProps;
 
     beforeEach(() => {
         minProps = {
-            login: jest.fn()
+            login: jest.fn(),
+            errorMessage: "Test error message"
         }
     });
 
@@ -40,8 +42,17 @@ describe('Component: LoginForm', () => {
         const userName = firstPreparedUserName.text();
         
         firstPreparedUserName.simulate('click');
-        const formUserNameFieldValue = wrapper.find('input').instance().value;
+        const formUserNameFieldValue = wrapper.find('input').props().value;
 
         expect(formUserNameFieldValue).toEqual(userName);
+    });
+
+    it('error message appears in right place', () => {
+        const testErrorMessage = "Test error message";
+        const wrapper = shallow(<LoginForm login={minProps.login} message={minProps.errorMessage}/>);
+        const errorMessagePlace = wrapper.find(`form div.${styles.errorMessage}`).first();
+        const formErrorMessage = errorMessagePlace.text();
+
+        expect(formErrorMessage).toEqual(testErrorMessage);
     });
 });
