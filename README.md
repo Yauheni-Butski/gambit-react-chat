@@ -12,6 +12,10 @@ In current test application are used:
 - React Redux
 - React Router
 - Redux Saga
+- Redux Actions
+- Connected React Router
+- CSS Modules
+- Enzyme + Jest for tests
 - API calls through fetch()
 - Persisting state between page refreshing using localStorage (didn't want to use 'redux-persist' for avoid 'wrapper hell'. And for this test application localStorage is enough)
 - Pusher ChatKit as server side (https://pusher.com/chatkit)
@@ -21,3 +25,6 @@ In current test application are used:
 - npm install
 - npm start
 
+# Launch tests
+
+- npm test
