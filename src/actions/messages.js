@@ -1,6 +1,6 @@
 import { createActions } from 'redux-actions';
 
-const { messageReceived, newMessage, clearMessages } = createActions(
+export default createActions(
     {
         MESSAGE_RECEIVED: (senderId, text) => ({
             senderId,
@@ -10,11 +10,3 @@ const { messageReceived, newMessage, clearMessages } = createActions(
         CLEAR_MESSAGES: undefined, //payload creator is the identity. (I think this style is better then passing 'USER_LOGOUT' as the second parameter in 'createActions')
     }
 );
-
-const messageActions = {
-    messageReceived,
-    newMessage,
-    clearMessages
-};
-
-export default messageActions;

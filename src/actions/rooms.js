@@ -1,6 +1,6 @@
 import { createActions } from 'redux-actions';
 
-const { updateRoomOnlineUsers, updateRoomUserStatus, enterToRoom, updateCurrentRoomId, updateRoomList ,fetchRoomList } = createActions(
+export default createActions(
     {
         UPDATE_ROOM_ONLINE_USERS: (roomOnlineUsers) => ({ roomOnlineUsers }),
         UPDATE_ROOM_USER_STATUS: (user, onlineStatus ) => ({
@@ -13,14 +13,3 @@ const { updateRoomOnlineUsers, updateRoomUserStatus, enterToRoom, updateCurrentR
         FETCH_ROOM_LIST: undefined
     }
 );
-
-const roomActions = {
-    updateRoomOnlineUsers,
-    updateRoomUserStatus,
-    enterToRoom,
-    updateCurrentRoomId,
-    fetchRoomList,
-    updateRoomList
-};
-
-export default roomActions;
