@@ -1,17 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames/bind';
 
 import styles from './UserList.module.css';
 
+let cx = classNames.bind(styles);
+
 function UserList({currentRoomId, onlineUsers}) {
+    let classNames = cx({
+        userList: true,
+        closed: currentRoomId === undefined
+    });
+
     if(currentRoomId === undefined){
         return (
-            <div className={styles.userList + " " + styles.closed}></div>
+            <div className={classNames}></div>
         )
     }
 
     return (
-        <div className={styles.userList}>
+        <div className={classNames}>
             <ul>
                 <h3>Users online:</h3>
                 {onlineUsers.map(user => {

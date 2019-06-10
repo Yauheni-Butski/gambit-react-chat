@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames/bind';
 
 import RoomList from "../../containers/RoomList";
 import MessageList from "../../containers/MessageList";
@@ -10,11 +11,16 @@ import Logout from "../../containers/Logout";
 
 import styles from './Chat.module.css';
 
+let cx = classNames.bind(styles);
+
 class Chat extends Component {
     render() {
-        const active = this.props.isActive ? styles.active : "";
+        let classNames = cx({
+            active: this.props.isActive,
+            app: true
+        });
         return (
-        <div className={styles.app + " " + active}>
+        <div className={classNames}>
             <div className={styles.roomsListGridArea}>
                 <RoomList />
             </div>
